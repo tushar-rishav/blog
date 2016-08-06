@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tushar | Blog</title>
+  
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="http://gtushar.co/blog/"/>
+  <updated>2016-08-06T20:39:43.497Z</updated>
+  <id>http://gtushar.co/blog/</id>
+  
+  <author>
+    <name>Tushar Gautam</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python f-strings</title>
+    <link href="http://gtushar.co/blog/2016/07/21/Python-f-strings/"/>
+    <id>http://gtushar.co/blog/2016/07/21/Python-f-strings/</id>
+    <published>2016-07-20T19:37:54.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hey there! How are you doing? :)</p>
+<p>Since past couple of days I’ve been attending the <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference at Bilbao, Spain and it has been an <em>increíble</em> experience so far! There are over a dozen amazing talks with something new to share every day and the super fun lightning talks at the end of the day. If for some reason you weren’t able to attend the conference then you may see the talks <a href="https://www.youtube.com/results?search_query=europython+2016" target="_blank" rel="external">live</a> at EuroPython YouTube channel.</p>
+<p>In this blog I would like to talk briefly about <a href="https://mail.python.org/pipermail/python-dev/2015-September/141526.html" target="_blank" rel="external">PEP498</a> - Literal String Interpolation in Python. Python supports multiple ways to format text strings (<code>%</code>-formatting, <code>format</code> formatting and <code>Templates</code>). Each of these are useful in some ways but they do lack in other aspects. For eg. the simplest version of <code>format</code> style is too verbose.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line"><span class="string">“EuroPython is happening at &#123;place&#125;”</span>.format(place=place)</span><br></pre></td></tr></table></figure>
+
+<p>Clearly, there is a redundancy. <strong>place</strong> is being used multiple times. Similarly, <code>%</code> formatting is limited with the types (<code>int</code>, <code>str</code>, <code>double</code>) that can be parsed.</p>
+<p><strong>f-strings</strong> are proposed in PEP498. f-strings are basically a literal strings with ‘f’ or ‘F’ as prefix. It embeds expressions using braces that are evaluated at runtime. Let’s see some simple examples:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line">print(f<span class="string">“EuroPython is happening at &#123;place&#125;”</span>)  <span class="comment"># Simple enough, right?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">“Hello”</span></span><br><span class="line"></span><br><span class="line">print(f<span class="string">‘&#123;say_hello()&#125; there!’</span>)</span><br></pre></td></tr></table></figure>
+
+<p>I think that’s simpler and better than other string formatting options. If this feature interests you and you want to learn more about it then I recommend checking out the PEP498 <a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="external">documentation</a>.</p>
+<p>Cheers!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hey there! How are you doing? :)&lt;/p&gt;
+&lt;p&gt;Since past couple of days I’ve been attending the &lt;a href=&quot;https://ep2016.europython.eu/en/&quot; targ
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+    
+      <category term="PEP498" scheme="http://gtushar.co/blog/all-tags/PEP498/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Week 6</title>
+    <link href="http://gtushar.co/blog/2016/07/20/Week-6/"/>
+    <id>http://gtushar.co/blog/2016/07/20/Week-6/</id>
+    <published>2016-07-20T10:45:01.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>Last week  <a href="https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0" target="_blank" rel="external">coala-html</a> was released and my visa application for attending EuroPython, Spain got accepted. It was a joyful week. \o/</p>
+<p>Now post mid-term, I’ve started working on a new <a href="https://gitlab.com/coala/website" target="_blank" rel="external">website</a> for coala. Beside having a new UI, it will also have an editor integrated where users can upload a code snippet (presently, Python, JavaScript, Perl, Java, PHP only) and let coala run static code analysis on the file. Eventually, user gets the feedback. Some of the desired features are:</p>
+<ul>
+<li>Let user choose from various available bears for their language.</li>
+<li>Autofix the code snippet based on patch produced.</li>
+</ul>
+<p>The features appear cool but should be little tricky to implement. The challenging part is to automatically generate the coafile based on the settings and also apply the patch upon analysis. Also, I shall implement more features as I progress.<br>May the CSS be with me! :)</p>
+<p>Also, coming week I shall be conducting an online workshop - mostly to cover version control and workflow. Many new comers struggle in this area. I am hopeful that this workshop will help them learn the skills that are much needed and get them started quickly. Details to follow. :)</p>
+<p>Stay tuned!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Last week  &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala-html&lt;/a&gt; was r
+    
+    </summary>
+    
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="GSoC" scheme="http://gtushar.co/blog/all-tags/GSoC/"/>
+    
+      <category term="coalaWebsite" scheme="http://gtushar.co/blog/all-tags/coalaWebsite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Beta release</title>
+    <link href="http://gtushar.co/blog/2016/06/22/Beta-release/"/>
+    <id>http://gtushar.co/blog/2016/06/22/Beta-release/</id>
+    <published>2016-06-22T18:05:01.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>So finally we released coala-html <a href="https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0" target="_blank" rel="external">beta</a> version. At present, coala-html generates an interactive webpage using the results obtained from coala analysis. Users can search across results, browse the files and also the particular code lines where errors were produced. Similar to a coverage tool that displays the lines being missed. At present we support Linux platform only and will add more cool features in coming releases. </p>
+<p>We would love to hear from you. If you have any feature proposal or if you find any bugs, please let us <a href="https://github.com/coala-analyzer/coala-html/issues" target="_blank" rel="external">know</a></p>
+<p>Now, with coala-html released I’ve started working on coala website. Further updates in next blog!<br>:)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;So finally we released coala-html &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;externa
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+    
+      <category term="beta" scheme="http://gtushar.co/blog/all-tags/beta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TDD and BDD</title>
+    <link href="http://gtushar.co/blog/2016/06/14/TDD-and-BDD/"/>
+    <id>http://gtushar.co/blog/2016/06/14/TDD-and-BDD/</id>
+    <published>2016-06-14T14:31:49.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>Past a few days been hectic resulting from the fairly complicated overall Visa application process for Spain (need it for <a href="http://gtushar.co/blog/2016/05/22/europython/">EuroPython’16</a> ). Meanwhile, I have been reading about TDD or <em>Test Driven Development</em> and BDD or <em>Behaviour Driven Development</em> to write tests for the controllers using <a href="https://mochajs.org/" target="_blank" rel="external">Mocha</a> - a testing framework, <a href="http://chaijs.com/" target="_blank" rel="external">Chai</a> - a BDD assertion library and <a href="https://github.com/karma-runner/karma" target="_blank" rel="external">Karma</a> - a test <em>runner</em>. Test runner can run tests based on different test frameworks - in this case. Mocha. Their documentaions might seem bloating at first sight. I felt the same when I started reading about them. But it’s actually simple once you’ve understood the concept behind TDD. Through this blog I shall try to explain why we should follow TDD approach and also write some basic tests using <em>Mocha</em> and <em>Chai</em> together. Let’s drop karma for a while.</p>
+<h3 id="Why-TDD"><a href="#Why-TDD" class="headerlink" title="Why TDD?"></a><a href="#Why-TDD" title="Why TDD?"></a>Why TDD?</h3><p>Originally, TDD meant writing tests before the actual implementation. ( But you may write tests afterwards too (not a good approach though). Now, the question comes - how can one write tests for something that haven’t been implemented yet. Makes sense, isn’t it? Well usually when you test modules/functions , you already know your expectations. For instance, If I am going to write a function that checks if a given real number is a power of 2, I already know the outcome. In this case it’s a boolean value - <code>True</code> for power of 2 and <code>False</code> otherwise. So, you may very well write tests using this information.<br>There are many advantages of adopting TDD. First being avoiding <em>Regression bugs</em>. Regression bug is a bug that had been fixed in the past and then occurred again. For instance, we change obviously unrelated piece of code and therefore we do not check some old problem, because we do not expect that problem to occur again. Once we have an automated test for this bug, it will not happen again because we can easily run all tests instead of manually trying only the parts that are obviously related to the change we made.<br>Another reason being <em>Refactoring</em>. The code architecture may require changes to a project requirements. Tests prove whether the code still works, even after a major refactoring.</p>
+<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a><a href="#Get-started" title="Get started"></a>Get started</h3><h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a href="#Installation" title="Installation"></a>Installation</h4><p>You may install karma using <code>npm</code> - node package manager. To install the Karma plugins for Mocha and Chai. Also, it’d be nice to use PhantomJS for headless testing. Let’s create a <code>pacakge.json</code> file and add the dependencies to it. It might look like:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">“devDependencies”</span>: &#123;</span><br><span class="line">    <span class="string">“chai”</span>: <span class="string">“^3.5.0”</span>,</span><br><span class="line">    <span class="string">“karma”</span>: <span class="string">“^0.13.21”</span>,</span><br><span class="line">    <span class="string">“karma-chai”</span>: <span class="string">“^0.1.0”</span>,</span><br><span class="line">    <span class="string">“karma-jasmine”</span>: <span class="string">“^1.0.2”</span>,</span><br><span class="line">    <span class="string">“karma-mocha”</span>: <span class="string">“^0.2.2”</span>,</span><br><span class="line">    <span class="string">“mocha”</span>: <span class="string">“^2.4.5”</span>,</span><br><span class="line">    <span class="string">“karma-phantomjs-launcher”</span>: <span class="string">“^1.0.0”</span>,</span><br><span class="line">    <span class="string">“phantomjs-prebuilt”</span>: <span class="string">“^2.1.4”</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">“scripts”</span>: &#123;</span><br><span class="line">    <span class="string">“test”</span>: <span class="string">“./node_modules/.bin/karma start”</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, run <code>npm install</code> to fetch and install the dependencies.<br>Also, to make it easier to run karma from the command line you can install <code>karma-cli</code> globally, which will run the local version without having to specify the path to karma (node node_modules/karma/bin/karma):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g karma-cli</span><br></pre></td></tr></table></figure>
+
+<p>Karma needs a <a href="https://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank" rel="external">configuration file</a>. Create one by running <code>karma init</code> and answering the simple question. Make sure you specify <code>Mocha</code> as your testing framework. Also, mention source and tests files location accordingly. In my case it’s in <code>./app/**/*.js</code> for source and <code>./tests/**/*Spec.js</code> for tests.<br>Let’s create two empty files <code>app/powerOfTwo.js</code> and <code>tests/powerOfTwoSpec.js</code>. It’d look like</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── <span class="selector-tag">app</span></span><br><span class="line">│   └── <span class="selector-tag">powerOfTwo</span><span class="selector-class">.js</span></span><br><span class="line">└── <span class="selector-tag">tests</span></span><br><span class="line">    └── <span class="selector-tag">powerOfTwoSpec</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure>
+
+<p>Once you’re done, you have <code>karma-conf.js</code>. To get Chai included in the test pipeline, edit karma-conf.js and add it to the frameworks setting. Also to be able to use PhantomJS mention it in <code>browsers</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frameworks: [<span class="string">‘mocha’</span>, <span class="string">‘chai’</span>]</span><br><span class="line">browsers: [<span class="string">‘PhantomJS’</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Running <code>karma start</code> will execute the default karma-conf.js. You can have multiple configuration files which can be run by specifying the name of the configuration file. <code>karma start &amp;lt;conf-file-name&amp;gt;</code>.</p>
+<p>Enough installation. Let’s get down to writing tests.</p>
+<h4 id="Writing-tests"><a href="#Writing-tests" class="headerlink" title="Writing tests"></a><a href="#Writing-tests" title="Writing tests"></a>Writing tests</h4><p>By default, you can use Mocha’s assertion module (which is in fact Node’s regular assertion module) to run your tests. However, it can be quite limiting. This is where assertion libraries like Chai enter the frame. Writing a test is like constructing a perfect sentence in English. Don’t believe me? <a href="http://chaijs.com/guide/styles/" target="_blank" rel="external">Hm see yourself</a>. We <em>describe</em> an umbrella of tests, and state some <em>expected</em> outputs for various tests under that umbrella.</p>
+<p>Write this in <code>tests/powerOfTwoSpec.js</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">‘powerOfTwo’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// The Umbrella test. You can create as many depending on your code architecture</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Individual tests</span></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return a boolean value’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      powerOfTwo(<span class="number">64</span>).should.be.a(<span class="string">‘boolean’</span>);    <span class="comment">// I wish Visa process was as simple as this!!</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return <code>true</code> for power of 2’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      expect(powerOfTwo(<span class="number">64</span>)).to.be.true;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return <code>false</code> for non power of 2’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      expect(powerOfTwo(<span class="number">31</span>)).to.be.false;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Note that we haven’t created the <code>powerOfTwo</code> function yet. But looking at the tests, we can say how our function is <em>expected</em> to <em>behave</em>. That’s TDD and BDD for you in the simplest form.</p>
+<p>Now let’s write our powerOfTwo function in <code>powerOfTwo.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> powerOfTwo = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num &amp;&amp; (!(num &amp; (num<span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Finally, we may run the tests running <code>npm test</code> in project root directory.</p>
+<p>I hope that was simple and introduced you to the basics of TDD/BDD. Go ahead and try yourself.<br>Explore more at </p>
+<ul>
+<li><a href="http://chaijs.com/api/bdd/" target="_blank" rel="external">Chai-BDD</a></li>
+<li><a href="https://mochajs.org/" target="_blank" rel="external">Mocha</a> and*   <a href="https://karma-runner.github.io/0.13/index.html" target="_blank" rel="external">Karma</a></li>
+</ul>
+<p>Cheers! :)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Past a few days been hectic resulting from the fairly complicated overall Visa application process for Spain (need it for &lt;a href=&quot;http:/
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+    
+      <category term="Karma" scheme="http://gtushar.co/blog/all-tags/Karma/"/>
+    
+      <category term="Mocha" scheme="http://gtushar.co/blog/all-tags/Mocha/"/>
+    
+      <category term="Chai" scheme="http://gtushar.co/blog/all-tags/Chai/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coala-html Beta</title>
+    <link href="http://gtushar.co/blog/2016/05/27/coala-html-Beta/"/>
+    <id>http://gtushar.co/blog/2016/05/27/coala-html-Beta/</id>
+    <published>2016-05-27T13:33:26.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>So I had been working on coala-html beta version since a few weeks.<br>The <a href="https://github.com/coala-analyzer/coala-html/pull/46" target="_blank" rel="external">PR</a> was certainly huge to be reviewed at once and soon became cumbersome to keep changes updated. But credits to my mentor - <a href="https://github.com/Uran198" target="_blank" rel="external">Attila</a> and the constructive feedbacks from <a href="https://github.com/AbdealiJK" target="_blank" rel="external">Abdeali</a>, I could get it done the right way, making an appropriate and meaningful commits with a better code.</p>
+<h5 id="What-is-coala-html"><a href="#What-is-coala-html" class="headerlink" title="What is coala-html?"></a><a href="#What-is-coala-html" title="What is coala-html?"></a>What is coala-html?</h5><p><a href="https://github.com/coala-analyzer/coala-html" target="_blank" rel="external">coala-html</a> is a console application that runs <a href="https://github.com/coala-analyzer/coala" target="_blank" rel="external">coala</a> analysis and generates an interactive webpage for the user.</p>
+<h5 id="How-coala-html-works"><a href="#How-coala-html-works" class="headerlink" title="How coala-html works?"></a><a href="#How-coala-html-works" title="How coala-html works?"></a>How coala-html works?</h5><p>coala-html, creates a webpage (Angular app) based on certain json files that are generated - first time when coala-html is run on a given repository, or updated - running coala-html again. By default, the generated webpage is served by launching a server at localhost and the json files are updated. User has an option to change this behaviour by providing the <code>nolaunch</code> and <code>noupdate</code> arguments respectively  while running the coala-html. User can also provide an optional <code>dir</code> or directory path argument that will store the code for the webpage.<br>You may see a brief demo below:<br><img src="http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_1080/v1464355604/demo_ipdzsw.gif" alt="Demo"></p>
+<p>Now as the basic functionalities are done, I am gonna work on improving the UI and writing more tests for having maximum coverage in coming weeks.</p>
+<p>Stay tuned! :)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;So I had been working on coala-html beta version since a few weeks.&lt;br&gt;The &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/pull/46&quot;
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+    
+      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyAutoGUI</title>
+    <link href="http://gtushar.co/blog/2016/05/23/PyAutoGUI/"/>
+    <id>http://gtushar.co/blog/2016/05/23/PyAutoGUI/</id>
+    <published>2016-05-23T17:57:16.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>Recently, I came across <a href="https://github.com/asweigart/pyautogui" target="_blank" rel="external">PyAutoGUI</a>, a cross platform <strong>G</strong>raphical <strong>U</strong>ser <strong>I</strong>nterface automation Python module. The module allows us to programmatically control the mouse and keyboard. That means we can write scripts to automate the tasks that involved mouse movements/clicks or inputs from keyboard. To understand better let’s write a simple script that would draw a <a href="https://en.wikipedia.org/wiki/Peace_symbols" target="_blank" rel="external">Symbol of Peace</a> for us. If you don’t have any paint tool then you may try online for free at <a href="http://www.sumopaint.com/" target="_blank" rel="external">SumoPaint</a>.</p>
+<p>So before our script executes, we will have Brush tool selected. We could handle the selection of brush tool but it all depends on the position of the brush tool in Paint and it differs for various Paint softwares.<br>So let’s get started.</p>
+<p>Importing required modules. Nothing cool here.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>
+
+<p> Ideally, we would want to have control over our automation script even in situations when things go wrong. We could ask script to wait after every function call, giving us a short window to take control of the mouse and keyboard if something goes wrong.<br> This pause after each function call can be implemented by setting a certain numeric value to <strong>PAUSE</strong> constant in <strong>pyautogui</strong> module.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyautogui.PAUSE = <span class="number">1</span>    <span class="comment"># Pause for 1 seconds after every function call</span></span><br></pre></td></tr></table></figure>
+
+<p>We may also want to add an initial delay to let user select an appropriate paint tool.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Screen size can be obtained using <code>size</code> method. If you observer carefully, <code>Symbol of Peace</code> is a big circle enclosing an inverted <code>Y</code>. Circular path can be traced using <a href="https://en.wikipedia.org/wiki/Parametric_equation" target="_blank" rel="external">parametric equation</a>. Let us assume screen center as circle center.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cx, cy = pyautogui.size()    <span class="comment"># center for circle</span></span><br><span class="line">cx /= <span class="number">2</span></span><br><span class="line">cy /= <span class="number">2</span></span><br><span class="line">radius = <span class="number">100</span>    <span class="comment"># Radius of circle</span></span><br><span class="line">angle = <span class="number">0</span>        <span class="comment"># Frame of reference for revolution.</span></span><br><span class="line">omega = <span class="number">0.3</span>        <span class="comment"># Angular velocity</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># parametric equation of a circle</span></span><br><span class="line">x = cx + radius <em> math.cos(angle)</em></span><br><span class="line">y = cy + radius  math.sin(angle)</span><br></pre></td></tr></table></figure>
+
+<p>Mouse clicks can be implemented using <strong>pyautogui.click</strong> method. A mouse click is a combination of the two events:</p>
+<ul>
+<li>Pressing the button.</li>
+<li>Releasing the button.</li>
+</ul>
+<p>Both combined makes one click. <em>pyautogui.click</em> takes <strong>x</strong> and <strong>y</strong> coordinates of the region to click upon. If these params are not passed then a click is performed at the current mouse position.</p>
+<p>Let’s implement mouse click to focus on the paint region.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyautogui.click(x,y)</span><br></pre></td></tr></table></figure>
+
+<p>Apart from a click, we can also drag mouse cursor. <em>PyAutoGUI</em> provides the <strong>pyautogui.dragTo()</strong> and <strong>pyautogui.dragRel()</strong> functions to drag the mouse cursor to a new location or a location relative to its current one. <em>dragTo</em> takes <em>x</em> and <em>y</em> coordinate of the final position and <em>dragRel</em> takes <em>x</em> and <em>y</em> coordinates and interprets it relative to the current position.<br>The origin lies at top-left corner of screen and the x-coordinates increase going to the right, and the y-coordinates increase going down. All coordinates are positive integers; there are no negative coordinates.</p>
+<p>Now next few lines would create a circular path with enclosed inverted <code>Y</code>. The idea is to use parametric equation of circle and keep incrementing the angle until one complete revolution or 2*PI angle has been swept.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">2</span><em>math.pi - angle &gt;= <span class="number">0.001</span>:</em></span><br><span class="line">    angle = angle + omega</span><br><span class="line">    x = x + radius  omega <em> math.cos(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    y = y + radius  omega <em> math.sin(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    pyautogui.dragTo(x, y, duration=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.moveTo(cx, cy-radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx, cy+radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx - radius  math.cos(math.pi/<span class="number">4</span>), cy + radius <em> math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</em></span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx + radius  math.cos(math.pi/<span class="number">4</span>), cy + radius * math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Combining all together</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">cx, cy = pyautogui.size()</span><br><span class="line">cx /= <span class="number">2</span></span><br><span class="line">cy /= <span class="number">2</span></span><br><span class="line">radius = <span class="number">100</span></span><br><span class="line">angle = <span class="number">0</span></span><br><span class="line">omega = <span class="number">0.3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># parametric equation of circle</span></span><br><span class="line">x = cx + radius <em> math.cos(angle)</em></span><br><span class="line">y = cy + radius  math.sin(angle)</span><br><span class="line">pyautogui.click(x,y)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">2</span><em>math.pi - angle &gt;= <span class="number">0.001</span>:</em></span><br><span class="line">    angle = angle + omega</span><br><span class="line">    x = x + radius  omega <em> math.cos(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    y = y + radius  omega <em> math.sin(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    pyautogui.dragTo(x, y, duration=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.moveTo(cx, cy-radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx, cy+radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx - radius  math.cos(math.pi/<span class="number">4</span>), cy + radius <em> math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</em></span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx + radius  math.cos(math.pi/<span class="number">4</span>), cy + radius * math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>You may try and run this script after selecting a brush tool.<br>Here is a Demo<br><img src="http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_640/v1464026198/demo_gsvgit.gif" alt="Demo"></p>
+<p>Please note that this was only a brief introduction to GUI automation using Python. <strong>PyAutoGUI</strong> also provides a bunch of other functions like to perform hotkeys operations (<em>Ctrl + c</em> for copy) etc.<br>If you find this module interesting you should check out its <a href="http://pyautogui.readthedocs.io/en/latest/introduction.html" target="_blank" rel="external">documentation.</a></p>
+<p>Cheers!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Recently, I came across &lt;a href=&quot;https://github.com/asweigart/pyautogui&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PyAutoGUI&lt;/a&gt;, a cross platform &lt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+    
+      <category term="GUI Automation" scheme="http://gtushar.co/blog/all-tags/GUI-Automation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EuroPython 2016</title>
+    <link href="http://gtushar.co/blog/2016/05/22/EuroPython-2016/"/>
+    <id>http://gtushar.co/blog/2016/05/22/EuroPython-2016/</id>
+    <published>2016-05-21T20:22:14.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://res.cloudinary.com/tusharrishav/image/upload/v1463859229/europython_drwanh.png" alt="EuroPython Logo"><br>I am really pumped up for the forthcoming <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference being held in Bilbao, Spain from July 17-24.</p>
+<h3 id="EuroPython-in-brief"><a href="#EuroPython-in-brief" class="headerlink" title="EuroPython in brief"></a><a href="#EuroPython-in-brief" title="EuroPython in brief"></a>EuroPython in brief</h3><p>The EuroPython conference series was initiated by the <a href="http://www.europython-society.org/" target="_blank" rel="external">European Python community</a> in 2002. It started in Charleroi, Belgium, which attracted over 200 attendees and have surpassed the 1000 attendee mark in 2014. It’s the second largest Python conference world-wide and the largest in Europe. If you are interested, you should <a href="https://ep2016.europython.eu/en/registration/" target="_blank" rel="external">buy</a> the ticket as long as they last. :)</p>
+<h3 id="Purpose-of-visit"><a href="#Purpose-of-visit" class="headerlink" title="Purpose of visit"></a><a href="#Purpose-of-visit" title="Purpose of visit"></a>Purpose of visit</h3><p>I shall be conducting a session on a <a href="https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice" target="_blank" rel="external">guide to make a real contribution to an open source project for novice</a> and also be accompanied by the awesome <a href="https://github.com/coala-analyzer/" target="_blank" rel="external">coalains</a> who will be attending this conference. We have a <a href="https://wiki.python.org/moin/EuroPython2016/coalaSprint" target="_blank" rel="external">sprint</a> scheduled too. :D</p>
+<p>I am grateful to the <a href="https://www.python.org/psf/" target="_blank" rel="external">Python Software Foundation</a> and EuroPython for sponsoring the accommodation and ticket for the conference. Without such aid it wouldn’t be possible to meet the awesome community out there. I must also pay my gratitude to <a href="https://github.com/sils1297" target="_blank" rel="external">Lasse Schuirmann</a> for encouraging and helping to make this participation actually happen. :)</p>
+<p>Stay tuned!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/tusharrishav/image/upload/v1463859229/europython_drwanh.png&quot; alt=&quot;EuroPython Logo&quot;&gt;&lt;br&gt;I am really pu
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="EuroPython" scheme="http://gtushar.co/blog/all-tags/EuroPython/"/>
+    
+      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+    
+      <category term="PyCon" scheme="http://gtushar.co/blog/all-tags/PyCon/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Run your own race</title>
+    <link href="http://gtushar.co/blog/2016/05/19/Run-your-own-race/"/>
+    <id>http://gtushar.co/blog/2016/05/19/Run-your-own-race/</id>
+    <published>2016-05-18T22:25:14.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Most people live - whether physically, intellectually or morally - in a very restricted circle of their potential being. We all have reservoirs of life to draw upon of which we do not dream.<br>                                                                            <strong>William James</strong></p>
+</blockquote>
+<hr>
+<p>Since past few days, I have been reading <a href="https://en.wikipedia.org/wiki/The_Monk_Who_Sold_His_Ferrari" target="_blank" rel="external">The Monk Who Sold His Ferrari</a> by <a href="https://en.wikipedia.org/wiki/Robin_Sharma" target="_blank" rel="external">Robin Sharma</a>.<br>The author emphasises the importance of observing the beauty in the most ordinary things and talks about a mystical fable that contains the seven virtues for an enriched life.<br>The fable goes like:</p>
+<blockquote>
+<p>Imagine, you are sitting in the middle of a magnificent, lush, green garden. This garden is filled with the most spectacular flowers you have ever seen. The environment is supremely tranquil and silent. Savor the sensual delights of this garden and feel as if you have all the time in the world to<br>enjoy this natural oasis. As you look around you see that in the center of this magical garden stands a towering, red lighthouse, six stories high. Suddenly, the silence of the garden is disturbed by a loud creaking as the door at the base of the lighthouse opens. Out stumbles a nine-foot-tall,<br>nine-hundred-pound Japanese sumo wrestler who casually wanders into the center of the garden. As this sumo wrestler starts to move around the garden, he finds a shiny gold stopwatch which someone had left behind many years earlier. He slips it on, and falls to the ground with an enormous thud. The sumo wrestler is rendered unconscious and lies there, silent and still. Just<br>when you think he has taken his last breath, the wrestler awakens, perhaps stirred by the fragrance of some fresh yellow roses blooming nearby. Energized, the wrestler jumps swiftly to his feet and intuitively looks to his left. He is startled at what he sees. Through the bushes at the very edge of the garden he observes a long winding path covered by millions of sparkling diamonds. Something seems to instruct the wrestler to take the path, and to his credit, he does. This path leads him down the road of everlasting joy and eternal bliss.</p>
+</blockquote>
+<p>The author further explains that in the fable, the garden is a symbol for the mind and it is one of the seven timeless virtues for living a gratified life. If we care for our mind, if we nurture it and if we cultivate it just like a fertile, rich garden, it will blossom far beyond our expectations. But if we let the weeds take root, lasting peace of mind and deep inner harmony will always elude us.<br>Our life is highly influenced by the quality of our thoughts. Thoughts are paramount and little bundles of energy. The author recommends to care for our thoughts as if it being the most prized possessions. Negative thoughts or worries reduce the productivity of that twelve-pound mass sitting between our shoulders - <em>Our Mind</em>.<br>To summarize</p>
+<ul>
+<li>Cultivate the mind with the positive thoughts.</li>
+<li>Listen to your conscience and <em>run your own race.</em></li>
+</ul>
+<p>I shall be sharing more as I further progress. :)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Most people live - whether physically, intellectually or morally - in a very restricted circle of their potential being. We 
+    
+    </summary>
+    
+    
+      <category term="Philosophy" scheme="http://gtushar.co/blog/all-tags/Philosophy/"/>
+    
+      <category term="The Monk Who Sold His Ferrari" scheme="http://gtushar.co/blog/all-tags/The-Monk-Who-Sold-His-Ferrari/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hola GSoC&#39;16</title>
+    <link href="http://gtushar.co/blog/2016/05/09/Hola-GSoC-16/"/>
+    <id>http://gtushar.co/blog/2016/05/09/Hola-GSoC-16/</id>
+    <published>2016-05-08T20:18:49.000Z</published>
+    <updated>2016-08-06T20:39:43.497Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hi there!</p>
+<p>Something was holding me back from taking the first step but finally, I’ve started writing blog. \m/</p>
+<p>I am delighted to share the news that I’ve been recently selected as a <a href="http://summerofcode.withgoogle.com/" target="_blank" rel="external">Google Summer of Code</a> intern and I shall be working with <a href="http://coala-analyzer.org/" target="_blank" rel="external">coala organisation</a> under Python Software Foundation.<br>It all started with my participation in <a href="https://www.hackerearth.com/sprints/open-source-india-hacks-2016/" target="_blank" rel="external">IndiaHack Open Source competition</a>, a month long contest during January’16 and got introduced to coala.<br>I still remember, within a few hours after my first message at <a href="https://gitter.im/coala-analyzer/coala" target="_blank" rel="external">Gitter channel</a>, I started working on an issue that was supposed to improve the coverage of coala core. Specifically, increase it from 98% to 100%. I had to first get familiar with the codebase, coala protocols like rebase - linear history, making atomic changes with good commit messages and writing a quality code. As I had just started, it was certainly a challenging task for me. But with the humble and ever supporting nature of coala developers, I got comfortable fairly soon.<br>I really look forward to continue as a contributor to this awesome community as a GSoC intern during summer and further.</p>
+<h6 id="Being-coalaian"><a href="#Being-coalaian" class="headerlink" title="Being coalaian"></a><a href="#Being-coalaian" title="Being coalaian"></a>Being coalaian</h6><p>Certainly, It has been a learning experience so far. I’ve learnt a lot since past couple of months. Getting inspired from another awesome coalaian - <a href="https://github.com/sils1297" target="_blank" rel="external">Sils1297</a>, I shall be attending <a href="https://ep2016.europython.eu/" target="_blank" rel="external">EuroPython 2016</a> at Bilbao, Spain coming July. My talk, <a href="https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice" target="_blank" rel="external">Guide to make a real contribution to an open source project for novice</a> can be seen at the website.<br>We also have a <a href="https://wiki.python.org/moin/EuroPython2016/coalaSprint" target="_blank" rel="external">sprint</a> planned during the conference.<br>Feel free to drop me a mail if you are attending the conference.</p>
+<p>I guess that’s all for now. :)<br>Stay tuned for further updates! </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi there!&lt;/p&gt;
+&lt;p&gt;Something was holding me back from taking the first step but finally, I’ve started writing blog. \m/&lt;/p&gt;
+&lt;p&gt;I am delight
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="init" scheme="http://gtushar.co/blog/all-tags/init/"/>
+    
+  </entry>
+  
+</feed>
