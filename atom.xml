@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Tushar | Explorer</title>
+  
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="http://tushar-rishav.github.io/blog/"/>
+  <updated>2016-07-20T19:37:54.324Z</updated>
+  <id>http://tushar-rishav.github.io/blog/</id>
+  
+  <author>
+    <name>Tushar Gautam</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python f-strings</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/07/20/fstring/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/07/20/fstring/</id>
+    <published>2016-07-20T10:40:24.000Z</published>
+    <updated>2016-07-20T19:37:54.324Z</updated>
+    
+    <content type="html">&lt;p&gt;Hey there! How are you doing? :)&lt;/p&gt;
+&lt;p&gt;Since past couple of days I’ve been attending the &lt;a href=&quot;https://ep2016.europython.eu/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EuroPython&lt;/a&gt; conference at Bilbao, Spain and it has been an &lt;em&gt;increíble&lt;/em&gt; experience so far! There are over a dozen amazing talks with something new to share every day and the super fun lightning talks at the end of the day. If for some reason you weren’t able to attend the conference then you may see the talks &lt;a href=&quot;https://www.youtube.com/results?search_query=europython+2016&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;live&lt;/a&gt; at EuroPython YouTube channel.&lt;/p&gt;
+&lt;p&gt;In this blog I would like to talk briefly about &lt;a href=&quot;https://mail.python.org/pipermail/python-dev/2015-September/141526.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP498&lt;/a&gt; - Literal String Interpolation in Python. Python supports multiple ways to format text strings (&lt;code&gt;%&lt;/code&gt;-formatting, &lt;code&gt;format&lt;/code&gt; formatting and &lt;code&gt;Templates&lt;/code&gt;). Each of these are useful in some ways but they do lack in other aspects. For eg. the simplest version of &lt;code&gt;format&lt;/code&gt; style is too verbose.&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;place = &lt;span class=&quot;string&quot;&gt;&quot;Bilbao, Spain&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;EuroPython is happening at &amp;#123;place&amp;#125;&quot;&lt;/span&gt;.format(place=place)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Clearly, there is a redundancy. &lt;strong&gt;place&lt;/strong&gt; is being used multiple times. Similarly, &lt;code&gt;%&lt;/code&gt; formatting is limited with the types (&lt;code&gt;int&lt;/code&gt;, &lt;code&gt;str&lt;/code&gt;, &lt;code&gt;double&lt;/code&gt;) that can be parsed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;f-strings&lt;/strong&gt; are proposed in PEP498. f-strings are basically a literal strings with ‘f’ or ‘F’ as prefix. It embeds expressions using braces that are evaluated at runtime. Let’s see some simple examples:&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;place = &lt;span class=&quot;string&quot;&gt;&quot;Bilbao, Spain&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(f&lt;span class=&quot;string&quot;&gt;&quot;EuroPython is happening at &amp;#123;place&amp;#125;&quot;&lt;/span&gt;)  &lt;span class=&quot;comment&quot;&gt;# Simple enough, right?&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;Hello&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;print(f&lt;span class=&quot;string&quot;&gt;&#39;&amp;#123;say_hello()&amp;#125; there!&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;I think that’s simpler and better than other string formatting options. If this feature interests you and you want to learn more about it then I recommend checking out the PEP498 &lt;a href=&quot;https://www.python.org/dev/peps/pep-0498/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cheers!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hey there! How are you doing? :)&lt;/p&gt;
+&lt;p&gt;Since past couple of days I’ve been attending the &lt;a href=&quot;https://ep2016.europython.eu/en/&quot; targ
+    
+    </summary>
+    
+      <category term="Python" scheme="http://tushar-rishav.github.io/blog/categories/Python/"/>
+    
+    
+      <category term="PEP498" scheme="http://tushar-rishav.github.io/blog/tags/PEP498/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Week 6</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/07/03/coalaWebsite/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/07/03/coalaWebsite/</id>
+    <published>2016-07-02T18:30:24.000Z</published>
+    <updated>2016-07-20T10:45:01.915Z</updated>
+    
+    <content type="html">&lt;p&gt;Last week  &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala-html&lt;/a&gt; was released and my visa application for attending EuroPython, Spain got accepted. It was a joyful week. \o/&lt;/p&gt;
+&lt;p&gt;Now post mid-term, I’ve started working on a new &lt;a href=&quot;https://gitlab.com/coala/website&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;website&lt;/a&gt; for coala. Beside having a new UI, it will also have an editor integrated where users can upload a code snippet (presently, Python, JavaScript, Perl, Java, PHP only) and let coala run static code analysis on the file. Eventually, user gets the feedback. Some of the desired features are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Let user choose from various available bears for their language.&lt;/li&gt;
+&lt;li&gt;Autofix the code snippet based on patch produced.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The features appear cool but should be little tricky to implement. The challenging part is to automatically generate the coafile based on the settings and also apply the patch upon analysis. Also, I shall implement more features as I progress.&lt;br&gt;May the CSS be with me! :)&lt;/p&gt;
+&lt;p&gt;Also, coming week I shall be conducting an online workshop - mostly to cover version control and workflow. Many new comers struggle in this area. I am hopeful that this workshop will help them learn the skills that are much needed and get them started quickly. Details to follow. :)&lt;/p&gt;
+&lt;p&gt;Stay tuned!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Last week  &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala-html&lt;/a&gt; was r
+    
+    </summary>
+    
+      <category term="GSoC" scheme="http://tushar-rishav.github.io/blog/categories/GSoC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/categories/GSoC/coala/"/>
+    
+    
+      <category term="coalaWebsite" scheme="http://tushar-rishav.github.io/blog/tags/coalaWebsite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Beta release</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/06/22/Beta/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/06/22/Beta/</id>
+    <published>2016-06-22T17:18:08.000Z</published>
+    <updated>2016-06-22T18:05:01.090Z</updated>
+    
+    <content type="html">&lt;p&gt;So finally we released coala-html &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;beta&lt;/a&gt; version. At present, coala-html generates an interactive webpage using the results obtained from coala analysis. Users can search across results, browse the files and also the particular code lines where errors were produced. Similar to a coverage tool that displays the lines being missed. At present we support Linux platform only and will add more cool features in coming releases. &lt;/p&gt;
+&lt;p&gt;We would love to hear from you. If you have any feature proposal or if you find any bugs, please let us &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;know&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, with coala-html released I’ve started working on coala website. Further updates in next blog!&lt;br&gt;:)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;So finally we released coala-html &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0&quot; target=&quot;_blank&quot; rel=&quot;externa
+    
+    </summary>
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/coala/"/>
+    
+    
+      <category term="coala-html" scheme="http://tushar-rishav.github.io/blog/tags/coala-html/"/>
+    
+      <category term="beta" scheme="http://tushar-rishav.github.io/blog/tags/beta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TDD and BDD</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/06/14/TDD-BDD/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/06/14/TDD-BDD/</id>
+    <published>2016-06-14T12:11:30.000Z</published>
+    <updated>2016-06-14T14:31:49.704Z</updated>
+    
+    <content type="html">&lt;p&gt;Past a few days been hectic resulting from the fairly complicated overall Visa application process for Spain (need it for &lt;a href=&quot;http://gtushar.co/blog/2016/05/22/europython/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EuroPython’16&lt;/a&gt; ). Meanwhile, I have been reading about TDD or &lt;em&gt;Test Driven Development&lt;/em&gt; and BDD or &lt;em&gt;Behaviour Driven Development&lt;/em&gt; to write tests for the controllers using &lt;a href=&quot;https://mochajs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mocha&lt;/a&gt; - a testing framework, &lt;a href=&quot;http://chaijs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chai&lt;/a&gt; - a BDD assertion library and &lt;a href=&quot;https://github.com/karma-runner/karma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Karma&lt;/a&gt; - a test &lt;em&gt;runner&lt;/em&gt;. Test runner can run tests based on different test frameworks - in this case. Mocha. Their documentaions might seem bloating at first sight. I felt the same when I started reading about them. But it’s actually simple once you’ve understood the concept behind TDD. Through this blog I shall try to explain why we should follow TDD approach and also write some basic tests using &lt;em&gt;Mocha&lt;/em&gt; and &lt;em&gt;Chai&lt;/em&gt; together. Let’s drop karma for a while.&lt;/p&gt;
+&lt;h3 id=&quot;Why-TDD&quot;&gt;&lt;a href=&quot;#Why-TDD&quot; class=&quot;headerlink&quot; title=&quot;Why TDD?&quot;&gt;&lt;/a&gt;Why TDD?&lt;/h3&gt;&lt;p&gt;Originally, TDD meant writing tests before the actual implementation. ( But you may write tests afterwards too (not a good approach though). Now, the question comes - how can one write tests for something that haven’t been implemented yet. Makes sense, isn’t it? Well usually when you test modules/functions , you already know your expectations. For instance, If I am going to write a function that checks if a given real number is a power of 2, I already know the outcome. In this case it’s a boolean value - &lt;code&gt;True&lt;/code&gt; for power of 2 and &lt;code&gt;False&lt;/code&gt; otherwise. So, you may very well write tests using this information.&lt;br&gt;There are many advantages of adopting TDD. First being avoiding &lt;em&gt;Regression bugs&lt;/em&gt;. Regression bug is a bug that had been fixed in the past and then occurred again. For instance, we change obviously unrelated piece of code and therefore we do not check some old problem, because we do not expect that problem to occur again. Once we have an automated test for this bug, it will not happen again because we can easily run all tests instead of manually trying only the parts that are obviously related to the change we made.&lt;br&gt;Another reason being &lt;em&gt;Refactoring&lt;/em&gt;. The code architecture may require changes to a project requirements. Tests prove whether the code still works, even after a major refactoring.&lt;/p&gt;
+&lt;h3 id=&quot;Get-started&quot;&gt;&lt;a href=&quot;#Get-started&quot; class=&quot;headerlink&quot; title=&quot;Get started&quot;&gt;&lt;/a&gt;Get started&lt;/h3&gt;&lt;h4 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h4&gt;&lt;p&gt;You may install karma using &lt;code&gt;npm&lt;/code&gt; - node package manager. To install the Karma plugins for Mocha and Chai. Also, it’d be nice to use PhantomJS for headless testing. Let’s create a &lt;code&gt;pacakge.json&lt;/code&gt; file and add the dependencies to it. It might look like:&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;string&quot;&gt;&quot;devDependencies&quot;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;chai&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^3.5.0&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;karma&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^0.13.21&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;karma-chai&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^0.1.0&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;karma-jasmine&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^1.0.2&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;karma-mocha&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^0.2.2&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;mocha&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^2.4.5&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;karma-phantomjs-launcher&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^1.0.0&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;phantomjs-prebuilt&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;^2.1.4&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;string&quot;&gt;&quot;scripts&quot;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;test&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;./node_modules/.bin/karma start&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Now, run &lt;code&gt;npm install&lt;/code&gt; to fetch and install the dependencies.&lt;br&gt;Also, to make it easier to run karma from the command line you can install &lt;code&gt;karma-cli&lt;/code&gt; globally, which will run the local version without having to specify the path to karma (node node_modules/karma/bin/karma):&lt;br&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install -g karma-cli&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Karma needs a &lt;a href=&quot;https://karma-runner.github.io/0.13/config/configuration-file.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;configuration file&lt;/a&gt;. Create one by running &lt;code&gt;karma init&lt;/code&gt; and answering the simple question. Make sure you specify &lt;code&gt;Mocha&lt;/code&gt; as your testing framework. Also, mention source and tests files location accordingly. In my case it’s in &lt;code&gt;./app/**/*.js&lt;/code&gt; for source and &lt;code&gt;./tests/**/*Spec.js&lt;/code&gt; for tests.&lt;br&gt;Let’s create two empty files &lt;code&gt;app/powerOfTwo.js&lt;/code&gt; and &lt;code&gt;tests/powerOfTwoSpec.js&lt;/code&gt;. It’d look like&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;├── &lt;span class=&quot;selector-tag&quot;&gt;app&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│   └── &lt;span class=&quot;selector-tag&quot;&gt;powerOfTwo&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;└── &lt;span class=&quot;selector-tag&quot;&gt;tests&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    └── &lt;span class=&quot;selector-tag&quot;&gt;powerOfTwoSpec&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Once you’re done, you have &lt;code&gt;karma-conf.js&lt;/code&gt;. To get Chai included in the test pipeline, edit karma-conf.js and add it to the frameworks setting. Also to be able to use PhantomJS mention it in &lt;code&gt;browsers&lt;/code&gt;.&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;frameworks: [&lt;span class=&quot;string&quot;&gt;&#39;mocha&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;chai&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;browsers: [&lt;span class=&quot;string&quot;&gt;&#39;PhantomJS&#39;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Running &lt;code&gt;karma start&lt;/code&gt; will execute the default karma-conf.js. You can have multiple configuration files which can be run by specifying the name of the configuration file. &lt;code&gt;karma start &amp;lt;conf-file-name&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Enough installation. Let’s get down to writing tests.&lt;/p&gt;
+&lt;h4 id=&quot;Writing-tests&quot;&gt;&lt;a href=&quot;#Writing-tests&quot; class=&quot;headerlink&quot; title=&quot;Writing tests&quot;&gt;&lt;/a&gt;Writing tests&lt;/h4&gt;&lt;p&gt;By default, you can use Mocha’s assertion module (which is in fact Node’s regular assertion module) to run your tests. However, it can be quite limiting. This is where assertion libraries like Chai enter the frame. Writing a test is like constructing a perfect sentence in English. Don’t believe me? &lt;a href=&quot;http://chaijs.com/guide/styles/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hm see yourself&lt;/a&gt;. We &lt;em&gt;describe&lt;/em&gt; an umbrella of tests, and state some &lt;em&gt;expected&lt;/em&gt; outputs for various tests under that umbrella.&lt;/p&gt;
+&lt;p&gt;Write this in &lt;code&gt;tests/powerOfTwoSpec.js&lt;/code&gt;.&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;describe(&lt;span class=&quot;string&quot;&gt;&#39;powerOfTwo&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;// The Umbrella test. You can create as many depending on your code architecture&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// Individual tests&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	it(&lt;span class=&quot;string&quot;&gt;&#39;powerOfTwo should return a boolean value&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	  powerOfTwo(&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;).should.be.a(&lt;span class=&quot;string&quot;&gt;&#39;boolean&#39;&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// I wish Visa process was as simple as this!!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	it(&lt;span class=&quot;string&quot;&gt;&#39;powerOfTwo should return `true` for power of 2&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	  expect(powerOfTwo(&lt;span class=&quot;number&quot;&gt;64&lt;/span&gt;)).to.be.true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	it(&lt;span class=&quot;string&quot;&gt;&#39;powerOfTwo should return `false` for non power of 2&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	  expect(powerOfTwo(&lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;)).to.be.false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Note that we haven’t created the &lt;code&gt;powerOfTwo&lt;/code&gt; function yet. But looking at the tests, we can say how our function is &lt;em&gt;expected&lt;/em&gt; to &lt;em&gt;behave&lt;/em&gt;. That’s TDD and BDD for you in the simplest form.&lt;/p&gt;
+&lt;p&gt;Now let’s write our powerOfTwo function in &lt;code&gt;powerOfTwo.js&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; powerOfTwo = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;num&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; num &amp;amp;&amp;amp; (!(num &amp;amp; (num&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;)));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Finally, we may run the tests running &lt;code&gt;npm test&lt;/code&gt; in project root directory.&lt;/p&gt;
+&lt;p&gt;I hope that was simple and introduced you to the basics of TDD/BDD. Go ahead and try yourself.&lt;br&gt;Explore more at &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://chaijs.com/api/bdd/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Chai-BDD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://mochajs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mocha&lt;/a&gt; and &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://karma-runner.github.io/0.13/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Karma&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cheers! :)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Past a few days been hectic resulting from the fairly complicated overall Visa application process for Spain (need it for &lt;a href=&quot;http:/
+    
+    </summary>
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/coala/"/>
+    
+    
+      <category term="coala-html" scheme="http://tushar-rishav.github.io/blog/tags/coala-html/"/>
+    
+      <category term="Karma" scheme="http://tushar-rishav.github.io/blog/tags/Karma/"/>
+    
+      <category term="Mocha" scheme="http://tushar-rishav.github.io/blog/tags/Mocha/"/>
+    
+      <category term="Chai" scheme="http://tushar-rishav.github.io/blog/tags/Chai/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coala-html Beta</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/05/27/coala-html-beta/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/05/27/coala-html-beta/</id>
+    <published>2016-05-27T12:51:14.000Z</published>
+    <updated>2016-05-27T13:33:26.196Z</updated>
+    
+    <content type="html">&lt;p&gt;So I had been working on coala-html beta version since a few weeks.&lt;br&gt;The &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/pull/46&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PR&lt;/a&gt; was certainly huge to be reviewed at once and soon became cumbersome to keep changes updated. But credits to my mentor - &lt;a href=&quot;https://github.com/Uran198&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Attila&lt;/a&gt; and the constructive feedbacks from &lt;a href=&quot;https://github.com/AbdealiJK&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Abdeali&lt;/a&gt;, I could get it done the right way, making an appropriate and meaningful commits with a better code.&lt;/p&gt;
+&lt;h5 id=&quot;What-is-coala-html&quot;&gt;&lt;a href=&quot;#What-is-coala-html&quot; class=&quot;headerlink&quot; title=&quot;What is coala-html?&quot;&gt;&lt;/a&gt;What is coala-html?&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/coala-analyzer/coala-html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala-html&lt;/a&gt; is a console application that runs &lt;a href=&quot;https://github.com/coala-analyzer/coala&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala&lt;/a&gt; analysis and generates an interactive webpage for the user.&lt;/p&gt;
+&lt;h5 id=&quot;How-coala-html-works&quot;&gt;&lt;a href=&quot;#How-coala-html-works&quot; class=&quot;headerlink&quot; title=&quot;How coala-html works?&quot;&gt;&lt;/a&gt;How coala-html works?&lt;/h5&gt;&lt;p&gt;coala-html, creates a webpage (Angular app) based on certain json files that are generated - first time when coala-html is run on a given repository, or updated - running coala-html again. By default, the generated webpage is served by launching a server at localhost and the json files are updated. User has an option to change this behaviour by providing the &lt;code&gt;nolaunch&lt;/code&gt; and &lt;code&gt;noupdate&lt;/code&gt; arguments respectively  while running the coala-html. User can also provide an optional &lt;code&gt;dir&lt;/code&gt; or directory path argument that will store the code for the webpage.&lt;br&gt;You may see a brief demo below:&lt;br&gt;&lt;img src=&quot;http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_1080/v1464355604/demo_ipdzsw.gif&quot; alt=&quot;Demo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Now as the basic functionalities are done, I am gonna work on improving the UI and writing more tests for having maximum coverage in coming weeks.&lt;/p&gt;
+&lt;p&gt;Stay tuned! :)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;So I had been working on coala-html beta version since a few weeks.&lt;br&gt;The &lt;a href=&quot;https://github.com/coala-analyzer/coala-html/pull/46&quot;
+    
+    </summary>
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/coala/"/>
+    
+    
+      <category term="coala-html" scheme="http://tushar-rishav.github.io/blog/tags/coala-html/"/>
+    
+      <category term="Python" scheme="http://tushar-rishav.github.io/blog/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EuroPython 2016</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/05/22/europython/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/05/22/europython/</id>
+    <published>2016-05-21T19:35:09.000Z</published>
+    <updated>2016-05-21T20:22:14.380Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/tusharrishav/image/upload/v1463859229/europython_drwanh.png&quot; alt=&quot;EuroPython Logo&quot;&gt;&lt;br&gt;I am really pumped up for the forthcoming &lt;a href=&quot;https://ep2016.europython.eu/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EuroPython&lt;/a&gt; conference being held in Bilbao, Spain from July 17-24.&lt;/p&gt;
+&lt;h3 id=&quot;EuroPython-in-brief&quot;&gt;&lt;a href=&quot;#EuroPython-in-brief&quot; class=&quot;headerlink&quot; title=&quot;EuroPython in brief&quot;&gt;&lt;/a&gt;EuroPython in brief&lt;/h3&gt;&lt;p&gt;The EuroPython conference series was initiated by the &lt;a href=&quot;http://www.europython-society.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;European Python community&lt;/a&gt; in 2002. It started in Charleroi, Belgium, which attracted over 200 attendees and have surpassed the 1000 attendee mark in 2014. It’s the second largest Python conference world-wide and the largest in Europe. If you are interested, you should &lt;a href=&quot;https://ep2016.europython.eu/en/registration/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;buy&lt;/a&gt; the ticket as long as they last. :)&lt;/p&gt;
+&lt;h3 id=&quot;Purpose-of-visit&quot;&gt;&lt;a href=&quot;#Purpose-of-visit&quot; class=&quot;headerlink&quot; title=&quot;Purpose of visit&quot;&gt;&lt;/a&gt;Purpose of visit&lt;/h3&gt;&lt;p&gt;I shall be conducting a session on a &lt;a href=&quot;https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;guide to make a real contribution to an open source project for novice&lt;/a&gt; and also be accompanied by the awesome &lt;a href=&quot;https://github.com/coala-analyzer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coalains&lt;/a&gt; who will be attending this conference. We have a &lt;a href=&quot;https://wiki.python.org/moin/EuroPython2016/coalaSprint&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sprint&lt;/a&gt; scheduled too. :D&lt;/p&gt;
+&lt;p&gt;I am grateful to the &lt;a href=&quot;https://www.python.org/psf/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Python Software Foundation&lt;/a&gt; and EuroPython for sponsoring the accommodation and ticket for the conference. Without such aid it wouldn’t be possible to meet the awesome community out there. I must also pay my gratitude to &lt;a href=&quot;https://github.com/sils1297&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lasse Schuirmann&lt;/a&gt; for encouraging and helping to make this participation actually happen. :)&lt;/p&gt;
+&lt;p&gt;Stay tuned!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/tusharrishav/image/upload/v1463859229/europython_drwanh.png&quot; alt=&quot;EuroPython Logo&quot;&gt;&lt;br&gt;I am really pu
+    
+    </summary>
+    
+      <category term="EuroPython" scheme="http://tushar-rishav.github.io/blog/categories/EuroPython/"/>
+    
+    
+      <category term="Python" scheme="http://tushar-rishav.github.io/blog/tags/Python/"/>
+    
+      <category term="PyCon" scheme="http://tushar-rishav.github.io/blog/tags/PyCon/"/>
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/tags/coala/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyAutoGUI</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/05/19/pyautogui/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/05/19/pyautogui/</id>
+    <published>2016-05-18T22:28:19.000Z</published>
+    <updated>2016-05-23T17:57:16.372Z</updated>
+    
+    <content type="html">&lt;p&gt;Recently, I came across &lt;a href=&quot;https://github.com/asweigart/pyautogui&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PyAutoGUI&lt;/a&gt;, a cross platform &lt;strong&gt;G&lt;/strong&gt;raphical &lt;strong&gt;U&lt;/strong&gt;ser &lt;strong&gt;I&lt;/strong&gt;nterface automation Python module. The module allows us to programmatically control the mouse and keyboard. That means we can write scripts to automate the tasks that involved mouse movements/clicks or inputs from keyboard. To understand better let’s write a simple script that would draw a &lt;a href=&quot;https://en.wikipedia.org/wiki/Peace_symbols&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Symbol of Peace&lt;/a&gt; for us. If you don’t have any paint tool then you may try online for free at &lt;a href=&quot;http://www.sumopaint.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SumoPaint&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So before our script executes, we will have Brush tool selected. We could handle the selection of brush tool but it all depends on the position of the brush tool in Paint and it differs for various Paint softwares.&lt;br&gt;So let’s get started.&lt;/p&gt;
+&lt;p&gt;Importing required modules. Nothing cool here.&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; math&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pyautogui&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; time&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt; Ideally, we would want to have control over our automation script even in situations when things go wrong. We could ask script to wait after every function call, giving us a short window to take control of the mouse and keyboard if something goes wrong.&lt;br&gt; This pause after each function call can be implemented by setting a certain numeric value to &lt;strong&gt;PAUSE&lt;/strong&gt; constant in &lt;strong&gt;pyautogui&lt;/strong&gt; module.&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.PAUSE = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;	&lt;span class=&quot;comment&quot;&gt;# Pause for 1 seconds after every function call&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;We may also want to add an initial delay to let user select an appropriate paint tool.&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;time.sleep(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Screen size can be obtained using &lt;code&gt;size&lt;/code&gt; method. If you observer carefully, &lt;code&gt;Symbol of Peace&lt;/code&gt; is a big circle enclosing an inverted &lt;code&gt;Y&lt;/code&gt;. Circular path can be traced using &lt;a href=&quot;https://en.wikipedia.org/wiki/Parametric_equation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;parametric equation&lt;/a&gt;. Let us assume screen center as circle center.&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;cx, cy = pyautogui.size()	&lt;span class=&quot;comment&quot;&gt;# center for circle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cx /= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cy /= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;radius = &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;	&lt;span class=&quot;comment&quot;&gt;# Radius of circle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;angle = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;		&lt;span class=&quot;comment&quot;&gt;# Frame of reference for revolution.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;omega = &lt;span class=&quot;number&quot;&gt;0.3&lt;/span&gt;		&lt;span class=&quot;comment&quot;&gt;# Angular velocity&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# parametric equation of a circle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x = cx + radius * math.cos(angle)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;y = cy + radius * math.sin(angle)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Mouse clicks can be implemented using &lt;strong&gt;pyautogui.click&lt;/strong&gt; method. A mouse click is a combination of the two events:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pressing the button.&lt;/li&gt;
+&lt;li&gt;Releasing the button.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both combined makes one click. &lt;em&gt;pyautogui.click&lt;/em&gt; takes &lt;strong&gt;x&lt;/strong&gt; and &lt;strong&gt;y&lt;/strong&gt; coordinates of the region to click upon. If these params are not passed then a click is performed at the current mouse position.&lt;/p&gt;
+&lt;p&gt;Let’s implement mouse click to focus on the paint region.&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.click(x,y)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Apart from a click, we can also drag mouse cursor. &lt;em&gt;PyAutoGUI&lt;/em&gt; provides the &lt;strong&gt;pyautogui.dragTo()&lt;/strong&gt; and &lt;strong&gt;pyautogui.dragRel()&lt;/strong&gt; functions to drag the mouse cursor to a new location or a location relative to its current one. &lt;em&gt;dragTo&lt;/em&gt; takes &lt;em&gt;x&lt;/em&gt; and &lt;em&gt;y&lt;/em&gt; coordinate of the final position and &lt;em&gt;dragRel&lt;/em&gt; takes &lt;em&gt;x&lt;/em&gt; and &lt;em&gt;y&lt;/em&gt; coordinates and interprets it relative to the current position.&lt;br&gt;The origin lies at top-left corner of screen and the x-coordinates increase going to the right, and the y-coordinates increase going down. All coordinates are positive integers; there are no negative coordinates.&lt;/p&gt;
+&lt;p&gt;Now next few lines would create a circular path with enclosed inverted &lt;code&gt;Y&lt;/code&gt;. The idea is to use parametric equation of circle and keep incrementing the angle until one complete revolution or 2*PI angle has been swept.&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*math.pi - angle &amp;gt;= &lt;span class=&quot;number&quot;&gt;0.001&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	angle = angle + omega&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	x = x + radius * omega * math.cos(angle + math.pi / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	y = y + radius * omega * math.sin(angle + math.pi / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	pyautogui.dragTo(x, y, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy-radius, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx, cy+radius, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx - radius * math.cos(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), cy + radius * math.sin(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx + radius * math.cos(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), cy + radius * math.sin(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Combining all together&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; math&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pyautogui&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; time&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;time.sleep(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cx, cy = pyautogui.size()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cx /= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cy /= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;radius = &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;angle = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;omega = &lt;span class=&quot;number&quot;&gt;0.3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# parametric equation of circle&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;x = cx + radius * math.cos(angle)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;y = cy + radius * math.sin(angle)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.click(x,y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;*math.pi - angle &amp;gt;= &lt;span class=&quot;number&quot;&gt;0.001&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	angle = angle + omega&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	x = x + radius * omega * math.cos(angle + math.pi / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	y = y + radius * omega * math.sin(angle + math.pi / &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	pyautogui.dragTo(x, y, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy-radius, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx, cy+radius, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx - radius * math.cos(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), cy + radius * math.sin(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.moveTo(cx, cy, duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pyautogui.dragTo(cx + radius * math.cos(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), cy + radius * math.sin(math.pi/&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;), duration=&lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;You may try and run this script after selecting a brush tool.&lt;br&gt;Here is a Demo&lt;br&gt;&lt;img src=&quot;http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_640/v1464026198/demo_gsvgit.gif&quot; alt=&quot;Demo&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Please note that this was only a brief introduction to GUI automation using Python. &lt;strong&gt;PyAutoGUI&lt;/strong&gt; also provides a bunch of other functions like to perform hotkeys operations (&lt;em&gt;Ctrl + c&lt;/em&gt; for copy) etc.&lt;br&gt;If you find this module interesting you should check out its &lt;a href=&quot;http://pyautogui.readthedocs.io/en/latest/introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cheers!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Recently, I came across &lt;a href=&quot;https://github.com/asweigart/pyautogui&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PyAutoGUI&lt;/a&gt;, a cross platform &lt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://tushar-rishav.github.io/blog/categories/Python/"/>
+    
+    
+      <category term="GUI Automation" scheme="http://tushar-rishav.github.io/blog/tags/GUI-Automation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Run your own race</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/05/19/self-help/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/05/19/self-help/</id>
+    <published>2016-05-18T20:50:48.000Z</published>
+    <updated>2016-05-18T22:25:14.088Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Most people live - whether physically, intellectually or morally - in a very restricted circle of their potential being. We all have reservoirs of life to draw upon of which we do not dream.&lt;br&gt;                                                                            &lt;strong&gt;William James&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Since past few days, I have been reading &lt;a href=&quot;https://en.wikipedia.org/wiki/The_Monk_Who_Sold_His_Ferrari&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Monk Who Sold His Ferrari&lt;/a&gt; by &lt;a href=&quot;https://en.wikipedia.org/wiki/Robin_Sharma&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Robin Sharma&lt;/a&gt;.&lt;br&gt;The author emphasises the importance of observing the beauty in the most ordinary things and talks about a mystical fable that contains the seven virtues for an enriched life.&lt;br&gt;The fable goes like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Imagine, you are sitting in the middle of a magnificent, lush, green garden. This garden is filled with the most spectacular flowers you have ever seen. The environment is supremely tranquil and silent. Savor the sensual delights of this garden and feel as if you have all the time in the world to&lt;br&gt;enjoy this natural oasis. As you look around you see that in the center of this magical garden stands a towering, red lighthouse, six stories high. Suddenly, the silence of the garden is disturbed by a loud creaking as the door at the base of the lighthouse opens. Out stumbles a nine-foot-tall,&lt;br&gt;nine-hundred-pound Japanese sumo wrestler who casually wanders into the center of the garden. As this sumo wrestler starts to move around the garden, he finds a shiny gold stopwatch which someone had left behind many years earlier. He slips it on, and falls to the ground with an enormous thud. The sumo wrestler is rendered unconscious and lies there, silent and still. Just&lt;br&gt;when you think he has taken his last breath, the wrestler awakens, perhaps stirred by the fragrance of some fresh yellow roses blooming nearby. Energized, the wrestler jumps swiftly to his feet and intuitively looks to his left. He is startled at what he sees. Through the bushes at the very edge of the garden he observes a long winding path covered by millions of sparkling diamonds. Something seems to instruct the wrestler to take the path, and to his credit, he does. This path leads him down the road of everlasting joy and eternal bliss.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The author further explains that in the fable, the garden is a symbol for the mind and it is one of the seven timeless virtues for living a gratified life. If we care for our mind, if we nurture it and if we cultivate it just like a fertile, rich garden, it will blossom far beyond our expectations. But if we let the weeds take root, lasting peace of mind and deep inner harmony will always elude us.&lt;br&gt;Our life is highly influenced by the quality of our thoughts. Thoughts are paramount and little bundles of energy. The author recommends to care for our thoughts as if it being the most prized possessions. Negative thoughts or worries reduce the productivity of that twelve-pound mass sitting between our shoulders - &lt;em&gt;Our Mind&lt;/em&gt;.&lt;br&gt;To summarize&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cultivate the mind with the positive thoughts.&lt;/li&gt;
+&lt;li&gt;Listen to your conscience and &lt;em&gt;run your own race.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I shall be sharing more as I further progress. :)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Most people live - whether physically, intellectually or morally - in a very restricted circle of their potential being. We 
+    
+    </summary>
+    
+      <category term="Philosophy" scheme="http://tushar-rishav.github.io/blog/categories/Philosophy/"/>
+    
+    
+      <category term="The Monk Who Sold His Ferrari" scheme="http://tushar-rishav.github.io/blog/tags/The-Monk-Who-Sold-His-Ferrari/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hola GSoC&#39;16</title>
+    <link href="http://tushar-rishav.github.io/blog/2016/05/08/init/"/>
+    <id>http://tushar-rishav.github.io/blog/2016/05/08/init/</id>
+    <published>2016-05-08T17:29:17.000Z</published>
+    <updated>2016-05-08T20:18:49.816Z</updated>
+    
+    <content type="html">&lt;p&gt;Hi there!&lt;/p&gt;
+&lt;p&gt;Something was holding me back from taking the first step but finally, I’ve started writing blog. \m/&lt;/p&gt;
+&lt;p&gt;I am delighted to share the news that I’ve been recently selected as a &lt;a href=&quot;http://summerofcode.withgoogle.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google Summer of Code&lt;/a&gt; intern and I shall be working with &lt;a href=&quot;http://coala-analyzer.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;coala organisation&lt;/a&gt; under Python Software Foundation.&lt;br&gt;It all started with my participation in &lt;a href=&quot;https://www.hackerearth.com/sprints/open-source-india-hacks-2016/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IndiaHack Open Source competition&lt;/a&gt;, a month long contest during January’16 and got introduced to coala.&lt;br&gt;I still remember, within a few hours after my first message at &lt;a href=&quot;https://gitter.im/coala-analyzer/coala&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gitter channel&lt;/a&gt;, I started working on an issue that was supposed to improve the coverage of coala core. Specifically, increase it from 98% to 100%. I had to first get familiar with the codebase, coala protocols like rebase - linear history, making atomic changes with good commit messages and writing a quality code. As I had just started, it was certainly a challenging task for me. But with the humble and ever supporting nature of coala developers, I got comfortable fairly soon.&lt;br&gt;I really look forward to continue as a contributor to this awesome community as a GSoC intern during summer and further.&lt;/p&gt;
+&lt;h6 id=&quot;Being-coalaian&quot;&gt;&lt;a href=&quot;#Being-coalaian&quot; class=&quot;headerlink&quot; title=&quot;Being coalaian&quot;&gt;&lt;/a&gt;Being coalaian&lt;/h6&gt;&lt;p&gt;Certainly, It has been a learning experience so far. I’ve learnt a lot since past couple of months. Getting inspired from another awesome coalaian - &lt;a href=&quot;https://github.com/sils1297&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sils1297&lt;/a&gt;, I shall be attending &lt;a href=&quot;https://ep2016.europython.eu/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EuroPython 2016&lt;/a&gt; at Bilbao, Spain coming July. My talk, &lt;a href=&quot;https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Guide to make a real contribution to an open source project for novice&lt;/a&gt; can be seen at the website.&lt;br&gt;We also have a &lt;a href=&quot;https://wiki.python.org/moin/EuroPython2016/coalaSprint&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sprint&lt;/a&gt; planned during the conference.&lt;br&gt;Feel free to drop me a mail if you are attending the conference.&lt;/p&gt;
+&lt;p&gt;I guess that’s all for now. :)&lt;br&gt;Stay tuned for further updates! &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi there!&lt;/p&gt;
+&lt;p&gt;Something was holding me back from taking the first step but finally, I’ve started writing blog. \m/&lt;/p&gt;
+&lt;p&gt;I am delight
+    
+    </summary>
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/categories/GSOC/"/>
+    
+    
+      <category term="GSOC" scheme="http://tushar-rishav.github.io/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://tushar-rishav.github.io/blog/tags/coala/"/>
+    
+      <category term="init" scheme="http://tushar-rishav.github.io/blog/tags/init/"/>
+    
+  </entry>
+  
+</feed>
