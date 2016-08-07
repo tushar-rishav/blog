@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://gtushar.co/blog/"/>
-  <updated>2016-08-06T20:39:43.497Z</updated>
+  <updated>2016-08-07T00:46:15.145Z</updated>
   <id>http://gtushar.co/blog/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GSoC Experience</title>
+    <link href="http://gtushar.co/blog/2016/08/07/GSoC-Experience/"/>
+    <id>http://gtushar.co/blog/2016/08/07/GSoC-Experience/</id>
+    <published>2016-08-06T23:17:45.000Z</published>
+    <updated>2016-08-07T00:46:15.145Z</updated>
+    
+    <content type="html"><![CDATA[<p>Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience and the stuff that I have learnt in the past 11 weeks while contributing to <a href="https://github.com/coala-analyzer/" target="_blank" rel="external">coala-analyzer</a> as a <a href="summerofcode.withgoogle.com">Google Summer of Code</a> developer under Python Software Foundation. The list is long hence I won’t contain them in single post. :)</p>
+<h3 id="EuroPython’16-Experience"><a href="#EuroPython’16-Experience" class="headerlink" title="EuroPython’16 Experience"></a>EuroPython’16 Experience</h3><p>Recently, I attended <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference at Bilbao, Spain where I had a chance to meet a few cool fellow coalaians ( @sils1297, @sims1253, @Udayan12167, @justuswilhelm, @Redridge, @Adrianzatreanu and @hypothesist ) and over thousand Pythonista | Pythoneer who happened to share their love and experience using Python by presenting talks, lightning talks or training session. Sadly, I couldn’t meet <a href="https://github.com/Uran198" target="_blank" rel="external">Attila Tovt</a> my amazing GSoC mentor.</p>
+<p>Being my first PyCon ever, I was a little nervous but curious about it. Having spent a day with the community made me feel comfortable. Seeing the energy that people shared, I was overwhelmed! In the coming days, mornings started with a Keynote speaker which was then followed by over dozen talks throughout a day on various exciting topics like Descriptors in Python, Effective Code Review, AsyncIO, Algorithmic Trading with Python, Deep Learning with tensorflow, <a href="https://github.com/larryhastings/gilectomy" target="_blank" rel="external">Gilectomy</a>: overcoming the GIL in CPython implementation by <a href="https://github.com/larryhastings" target="_blank" rel="external">Lary Hastings</a> and many more.</p>
+<p>Finally the exploration ended with the workshop which I conducted on <a href="https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice" target="_blank" rel="external">Guide to make a real contribution to an open source project for novice</a>. It was a learning experience and definitely memorable for me! Being the first time in Europe, I was excited. People are friendly and the place is truly beautiful! :)</p>
+<h3 id="GSoC’16-Experience"><a href="#GSoC’16-Experience" class="headerlink" title="GSoC’16 Experience"></a>GSoC’16 Experience</h3><p>Well, it has been totally an amazing and learning experience during this summer. I could effectively learn the best practices for a collaborative programmer and (probably) became one! Credits to my mentor - @Uran198 who patiently and solicitously reviewed my PRs. I never really bothered to follow practices like <em>atomic changes</em> , <em>TDD</em> aiming for <em>maximum coverage</em> for good code quality until I started contributing. Honestly, following such practices seemed bloating and sometimes annoying at first but once I got hold of them, they became a habit. I think during the GSoC period, the crucial things that I have learnt are how to write a code that is maintainable (docstrings, effective and atomic commits), testable (efficient code design, writing unittests and impressive coverage) and follows the standards. Having learnt these skills, I look forward to share them with my friends and the community.<br>The coming blogs would cover these practices in details. :)</p>
+<h3 id="GSoC’16-status"><a href="#GSoC’16-status" class="headerlink" title="GSoC’16 status"></a>GSoC’16 status</h3><p>11 weeks are over with a week remaining before submissions. <a href="https://github.com/coala-analyzer/coala-html/" target="_blank" rel="external">coala-html</a> project is ready with this <a href="https://github.com/coala-analyzer/coala-html/pull/81" target="_blank" rel="external">PR</a>. I shall be working on to improve this project even after my GSoC period is over. Apart from coala-html, coala-website is almost ready with minor design stuff remaining. Soon enough I will submit it for review. :)</p>
+<p>Cheers!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience an
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+    
+      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+    
+      <category term="FOSS" scheme="http://gtushar.co/blog/all-tags/FOSS/"/>
+    
+      <category term="PSF" scheme="http://gtushar.co/blog/all-tags/PSF/"/>
+    
+  </entry>
   
   <entry>
     <title>Python f-strings</title>

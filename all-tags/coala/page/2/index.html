@@ -254,6 +254,78 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/blog/2016/06/14/TDD-and-BDD/">
+                            TDD and BDD
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2016-06-14T20:01:49+05:30">
+	
+		    Jun 14, 2016
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>Past a few days been hectic resulting from the fairly complicated overall Visa application process for Spain (need it for <a href="http://gtushar.co/blog/2016/05/22/europython/">EuroPython’16</a> ). Meanwhile, I have been reading about TDD or <em>Test Driven Development</em> and BDD or <em>Behaviour Driven Development</em> to write tests for the controllers using <a href="https://mochajs.org/" target="_blank" rel="external">Mocha</a> - a testing framework, <a href="http://chaijs.com/" target="_blank" rel="external">Chai</a> - a BDD assertion library and <a href="https://github.com/karma-runner/karma" target="_blank" rel="external">Karma</a> - a test <em>runner</em>. Test runner can run tests based on different test frameworks - in this case. Mocha. Their documentaions might seem bloating at first sight. I felt the same when I started reading about them. But it’s actually simple once you’ve understood the concept behind TDD. Through this blog I shall try to explain why we should follow TDD approach and also write some basic tests using <em>Mocha</em> and <em>Chai</em> together. Let’s drop karma for a while.</p>
+<h3 id="Why-TDD"><a href="#Why-TDD" class="headerlink" title="Why TDD?"></a><a href="#Why-TDD" title="Why TDD?"></a>Why TDD?</h3><p>Originally, TDD meant writing tests before the actual implementation. ( But you may write tests afterwards too (not a good approach though). Now, the question comes - how can one write tests for something that haven’t been implemented yet. Makes sense, isn’t it? Well usually when you test modules/functions , you already know your expectations. For instance, If I am going to write a function that checks if a given real number is a power of 2, I already know the outcome. In this case it’s a boolean value - <code>True</code> for power of 2 and <code>False</code> otherwise. So, you may very well write tests using this information.<br>There are many advantages of adopting TDD. First being avoiding <em>Regression bugs</em>. Regression bug is a bug that had been fixed in the past and then occurred again. For instance, we change obviously unrelated piece of code and therefore we do not check some old problem, because we do not expect that problem to occur again. Once we have an automated test for this bug, it will not happen again because we can easily run all tests instead of manually trying only the parts that are obviously related to the change we made.<br>Another reason being <em>Refactoring</em>. The code architecture may require changes to a project requirements. Tests prove whether the code still works, even after a major refactoring.</p>
+<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a><a href="#Get-started" title="Get started"></a>Get started</h3><h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a><a href="#Installation" title="Installation"></a>Installation</h4><p>You may install karma using <code>npm</code> - node package manager. To install the Karma plugins for Mocha and Chai. Also, it’d be nice to use PhantomJS for headless testing. Let’s create a <code>pacakge.json</code> file and add the dependencies to it. It might look like:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">“devDependencies”</span>: &#123;</span><br><span class="line">    <span class="string">“chai”</span>: <span class="string">“^3.5.0”</span>,</span><br><span class="line">    <span class="string">“karma”</span>: <span class="string">“^0.13.21”</span>,</span><br><span class="line">    <span class="string">“karma-chai”</span>: <span class="string">“^0.1.0”</span>,</span><br><span class="line">    <span class="string">“karma-jasmine”</span>: <span class="string">“^1.0.2”</span>,</span><br><span class="line">    <span class="string">“karma-mocha”</span>: <span class="string">“^0.2.2”</span>,</span><br><span class="line">    <span class="string">“mocha”</span>: <span class="string">“^2.4.5”</span>,</span><br><span class="line">    <span class="string">“karma-phantomjs-launcher”</span>: <span class="string">“^1.0.0”</span>,</span><br><span class="line">    <span class="string">“phantomjs-prebuilt”</span>: <span class="string">“^2.1.4”</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">“scripts”</span>: &#123;</span><br><span class="line">    <span class="string">“test”</span>: <span class="string">“./node_modules/.bin/karma start”</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, run <code>npm install</code> to fetch and install the dependencies.<br>Also, to make it easier to run karma from the command line you can install <code>karma-cli</code> globally, which will run the local version without having to specify the path to karma (node node_modules/karma/bin/karma):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g karma-cli</span><br></pre></td></tr></table></figure>
+
+<p>Karma needs a <a href="https://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank" rel="external">configuration file</a>. Create one by running <code>karma init</code> and answering the simple question. Make sure you specify <code>Mocha</code> as your testing framework. Also, mention source and tests files location accordingly. In my case it’s in <code>./app/**/*.js</code> for source and <code>./tests/**/*Spec.js</code> for tests.<br>Let’s create two empty files <code>app/powerOfTwo.js</code> and <code>tests/powerOfTwoSpec.js</code>. It’d look like</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── <span class="selector-tag">app</span></span><br><span class="line">│   └── <span class="selector-tag">powerOfTwo</span><span class="selector-class">.js</span></span><br><span class="line">└── <span class="selector-tag">tests</span></span><br><span class="line">    └── <span class="selector-tag">powerOfTwoSpec</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure>
+
+<p>Once you’re done, you have <code>karma-conf.js</code>. To get Chai included in the test pipeline, edit karma-conf.js and add it to the frameworks setting. Also to be able to use PhantomJS mention it in <code>browsers</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frameworks: [<span class="string">‘mocha’</span>, <span class="string">‘chai’</span>]</span><br><span class="line">browsers: [<span class="string">‘PhantomJS’</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Running <code>karma start</code> will execute the default karma-conf.js. You can have multiple configuration files which can be run by specifying the name of the configuration file. <code>karma start &amp;lt;conf-file-name&amp;gt;</code>.</p>
+<p>Enough installation. Let’s get down to writing tests.</p>
+<h4 id="Writing-tests"><a href="#Writing-tests" class="headerlink" title="Writing tests"></a><a href="#Writing-tests" title="Writing tests"></a>Writing tests</h4><p>By default, you can use Mocha’s assertion module (which is in fact Node’s regular assertion module) to run your tests. However, it can be quite limiting. This is where assertion libraries like Chai enter the frame. Writing a test is like constructing a perfect sentence in English. Don’t believe me? <a href="http://chaijs.com/guide/styles/" target="_blank" rel="external">Hm see yourself</a>. We <em>describe</em> an umbrella of tests, and state some <em>expected</em> outputs for various tests under that umbrella.</p>
+<p>Write this in <code>tests/powerOfTwoSpec.js</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">‘powerOfTwo’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// The Umbrella test. You can create as many depending on your code architecture</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Individual tests</span></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return a boolean value’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      powerOfTwo(<span class="number">64</span>).should.be.a(<span class="string">‘boolean’</span>);    <span class="comment">// I wish Visa process was as simple as this!!</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return <code>true</code> for power of 2’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      expect(powerOfTwo(<span class="number">64</span>)).to.be.true;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">‘powerOfTwo should return <code>false</code> for non power of 2’</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      expect(powerOfTwo(<span class="number">31</span>)).to.be.false;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Note that we haven’t created the <code>powerOfTwo</code> function yet. But looking at the tests, we can say how our function is <em>expected</em> to <em>behave</em>. That’s TDD and BDD for you in the simplest form.</p>
+<p>Now let’s write our powerOfTwo function in <code>powerOfTwo.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> powerOfTwo = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num &amp;&amp; (!(num &amp; (num<span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Finally, we may run the tests running <code>npm test</code> in project root directory.</p>
+<p>I hope that was simple and introduced you to the basics of TDD/BDD. Go ahead and try yourself.<br>Explore more at </p>
+<ul>
+<li><a href="http://chaijs.com/api/bdd/" target="_blank" rel="external">Chai-BDD</a></li>
+<li><a href="https://mochajs.org/" target="_blank" rel="external">Mocha</a> and*   <a href="https://karma-runner.github.io/0.13/index.html" target="_blank" rel="external">Karma</a></li>
+</ul>
+<p>Cheers! :)</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/blog/2016/06/14/TDD-and-BDD/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/blog/2016/05/27/coala-html-Beta/">
                             coala-html Beta
                         </a>
@@ -339,52 +411,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/blog/2016/05/09/Hola-GSoC-16/">
-                            Hola GSoC&#39;16
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-09T01:48:49+05:30">
-	
-		    May 09, 2016
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>Hi there!</p>
-<p>Something was holding me back from taking the first step but finally, I’ve started writing blog. \m/</p>
-<p>I am delighted to share the news that I’ve been recently selected as a <a href="http://summerofcode.withgoogle.com/" target="_blank" rel="external">Google Summer of Code</a> intern and I shall be working with <a href="http://coala-analyzer.org/" target="_blank" rel="external">coala organisation</a> under Python Software Foundation.<br>It all started with my participation in <a href="https://www.hackerearth.com/sprints/open-source-india-hacks-2016/" target="_blank" rel="external">IndiaHack Open Source competition</a>, a month long contest during January’16 and got introduced to coala.<br>I still remember, within a few hours after my first message at <a href="https://gitter.im/coala-analyzer/coala" target="_blank" rel="external">Gitter channel</a>, I started working on an issue that was supposed to improve the coverage of coala core. Specifically, increase it from 98% to 100%. I had to first get familiar with the codebase, coala protocols like rebase - linear history, making atomic changes with good commit messages and writing a quality code. As I had just started, it was certainly a challenging task for me. But with the humble and ever supporting nature of coala developers, I got comfortable fairly soon.<br>I really look forward to continue as a contributor to this awesome community as a GSoC intern during summer and further.</p>
-<h6 id="Being-coalaian"><a href="#Being-coalaian" class="headerlink" title="Being coalaian"></a><a href="#Being-coalaian" title="Being coalaian"></a>Being coalaian</h6><p>Certainly, It has been a learning experience so far. I’ve learnt a lot since past couple of months. Getting inspired from another awesome coalaian - <a href="https://github.com/sils1297" target="_blank" rel="external">Sils1297</a>, I shall be attending <a href="https://ep2016.europython.eu/" target="_blank" rel="external">EuroPython 2016</a> at Bilbao, Spain coming July. My talk, <a href="https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice" target="_blank" rel="external">Guide to make a real contribution to an open source project for novice</a> can be seen at the website.<br>We also have a <a href="https://wiki.python.org/moin/EuroPython2016/coalaSprint" target="_blank" rel="external">sprint</a> planned during the conference.<br>Feel free to drop me a mail if you are attending the conference.</p>
-<p>I guess that’s all for now. :)<br>Stay tuned for further updates! </p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/blog/2016/05/09/Hola-GSoC-16/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -398,7 +424,14 @@
         </li>
         
         
-        <li class="pagination-number">page 2 of 2</li>
+        <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/blog/all-tags/coala/page/3/">
+                    <span>OLDER POSTS</span>
+                <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+        </li>
+        
+        <li class="pagination-number">page 2 of 3</li>
     </ul>
 </div>
 

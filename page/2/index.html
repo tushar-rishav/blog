@@ -253,6 +253,50 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/blog/2016/06/22/Beta-release/">
+                            Beta release
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2016-06-22T23:35:01+05:30">
+	
+		    Jun 22, 2016
+    	
+    </time>
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>So finally we released coala-html <a href="https://github.com/coala-analyzer/coala-html/releases/tag/v0.2.0" target="_blank" rel="external">beta</a> version. At present, coala-html generates an interactive webpage using the results obtained from coala analysis. Users can search across results, browse the files and also the particular code lines where errors were produced. Similar to a coverage tool that displays the lines being missed. At present we support Linux platform only and will add more cool features in coming releases. </p>
+<p>We would love to hear from you. If you have any feature proposal or if you find any bugs, please let us <a href="https://github.com/coala-analyzer/coala-html/issues" target="_blank" rel="external">know</a></p>
+<p>Now, with coala-html released I’ve started working on coala website. Further updates in next blog!<br>:)</p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/blog/2016/06/22/Beta-release/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/blog/2016/06/14/TDD-and-BDD/">
                             TDD and BDD
                         </a>
@@ -364,80 +408,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/blog/2016/05/23/PyAutoGUI/">
-                            PyAutoGUI
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-23T23:27:16+05:30">
-	
-		    May 23, 2016
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>Recently, I came across <a href="https://github.com/asweigart/pyautogui" target="_blank" rel="external">PyAutoGUI</a>, a cross platform <strong>G</strong>raphical <strong>U</strong>ser <strong>I</strong>nterface automation Python module. The module allows us to programmatically control the mouse and keyboard. That means we can write scripts to automate the tasks that involved mouse movements/clicks or inputs from keyboard. To understand better let’s write a simple script that would draw a <a href="https://en.wikipedia.org/wiki/Peace_symbols" target="_blank" rel="external">Symbol of Peace</a> for us. If you don’t have any paint tool then you may try online for free at <a href="http://www.sumopaint.com/" target="_blank" rel="external">SumoPaint</a>.</p>
-<p>So before our script executes, we will have Brush tool selected. We could handle the selection of brush tool but it all depends on the position of the brush tool in Paint and it differs for various Paint softwares.<br>So let’s get started.</p>
-<p>Importing required modules. Nothing cool here.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br></pre></td></tr></table></figure>
-
-<p> Ideally, we would want to have control over our automation script even in situations when things go wrong. We could ask script to wait after every function call, giving us a short window to take control of the mouse and keyboard if something goes wrong.<br> This pause after each function call can be implemented by setting a certain numeric value to <strong>PAUSE</strong> constant in <strong>pyautogui</strong> module.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyautogui.PAUSE = <span class="number">1</span>    <span class="comment"># Pause for 1 seconds after every function call</span></span><br></pre></td></tr></table></figure>
-
-<p>We may also want to add an initial delay to let user select an appropriate paint tool.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Screen size can be obtained using <code>size</code> method. If you observer carefully, <code>Symbol of Peace</code> is a big circle enclosing an inverted <code>Y</code>. Circular path can be traced using <a href="https://en.wikipedia.org/wiki/Parametric_equation" target="_blank" rel="external">parametric equation</a>. Let us assume screen center as circle center.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cx, cy = pyautogui.size()    <span class="comment"># center for circle</span></span><br><span class="line">cx /= <span class="number">2</span></span><br><span class="line">cy /= <span class="number">2</span></span><br><span class="line">radius = <span class="number">100</span>    <span class="comment"># Radius of circle</span></span><br><span class="line">angle = <span class="number">0</span>        <span class="comment"># Frame of reference for revolution.</span></span><br><span class="line">omega = <span class="number">0.3</span>        <span class="comment"># Angular velocity</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># parametric equation of a circle</span></span><br><span class="line">x = cx + radius <em> math.cos(angle)</em></span><br><span class="line">y = cy + radius  math.sin(angle)</span><br></pre></td></tr></table></figure>
-
-<p>Mouse clicks can be implemented using <strong>pyautogui.click</strong> method. A mouse click is a combination of the two events:</p>
-<ul>
-<li>Pressing the button.</li>
-<li>Releasing the button.</li>
-</ul>
-<p>Both combined makes one click. <em>pyautogui.click</em> takes <strong>x</strong> and <strong>y</strong> coordinates of the region to click upon. If these params are not passed then a click is performed at the current mouse position.</p>
-<p>Let’s implement mouse click to focus on the paint region.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyautogui.click(x,y)</span><br></pre></td></tr></table></figure>
-
-<p>Apart from a click, we can also drag mouse cursor. <em>PyAutoGUI</em> provides the <strong>pyautogui.dragTo()</strong> and <strong>pyautogui.dragRel()</strong> functions to drag the mouse cursor to a new location or a location relative to its current one. <em>dragTo</em> takes <em>x</em> and <em>y</em> coordinate of the final position and <em>dragRel</em> takes <em>x</em> and <em>y</em> coordinates and interprets it relative to the current position.<br>The origin lies at top-left corner of screen and the x-coordinates increase going to the right, and the y-coordinates increase going down. All coordinates are positive integers; there are no negative coordinates.</p>
-<p>Now next few lines would create a circular path with enclosed inverted <code>Y</code>. The idea is to use parametric equation of circle and keep incrementing the angle until one complete revolution or 2*PI angle has been swept.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="number">2</span><em>math.pi - angle &gt;= <span class="number">0.001</span>:</em></span><br><span class="line">    angle = angle + omega</span><br><span class="line">    x = x + radius  omega <em> math.cos(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    y = y + radius  omega <em> math.sin(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    pyautogui.dragTo(x, y, duration=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.moveTo(cx, cy-radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx, cy+radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx - radius  math.cos(math.pi/<span class="number">4</span>), cy + radius <em> math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</em></span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx + radius  math.cos(math.pi/<span class="number">4</span>), cy + radius * math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Combining all together</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> pyautogui</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">time.sleep(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">cx, cy = pyautogui.size()</span><br><span class="line">cx /= <span class="number">2</span></span><br><span class="line">cy /= <span class="number">2</span></span><br><span class="line">radius = <span class="number">100</span></span><br><span class="line">angle = <span class="number">0</span></span><br><span class="line">omega = <span class="number">0.3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># parametric equation of circle</span></span><br><span class="line">x = cx + radius <em> math.cos(angle)</em></span><br><span class="line">y = cy + radius  math.sin(angle)</span><br><span class="line">pyautogui.click(x,y)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="number">2</span><em>math.pi - angle &gt;= <span class="number">0.001</span>:</em></span><br><span class="line">    angle = angle + omega</span><br><span class="line">    x = x + radius  omega <em> math.cos(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    y = y + radius  omega <em> math.sin(angle + math.pi / <span class="number">2</span>)</em></span><br><span class="line">    pyautogui.dragTo(x, y, duration=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">pyautogui.moveTo(cx, cy-radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx, cy+radius, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx - radius  math.cos(math.pi/<span class="number">4</span>), cy + radius <em> math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</em></span><br><span class="line">pyautogui.moveTo(cx, cy, duration=<span class="number">0.2</span>)</span><br><span class="line">pyautogui.dragTo(cx + radius  math.cos(math.pi/<span class="number">4</span>), cy + radius * math.sin(math.pi/<span class="number">4</span>), duration=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
-
-<p>You may try and run this script after selecting a brush tool.<br>Here is a Demo<br><img src="http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_640/v1464026198/demo_gsvgit.gif" alt="Demo"></p>
-<p>Please note that this was only a brief introduction to GUI automation using Python. <strong>PyAutoGUI</strong> also provides a bunch of other functions like to perform hotkeys operations (<em>Ctrl + c</em> for copy) etc.<br>If you find this module interesting you should check out its <a href="http://pyautogui.readthedocs.io/en/latest/introduction.html" target="_blank" rel="external">documentation.</a></p>
-<p>Cheers!</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/blog/2016/05/23/PyAutoGUI/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -458,7 +428,7 @@
             </a>
         </li>
         
-        <li class="pagination-number">page 2 of 3</li>
+        <li class="pagination-number">page 2 of 4</li>
     </ul>
 </div>
 

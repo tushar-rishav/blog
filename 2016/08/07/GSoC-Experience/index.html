@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Tushar | Blog">
-    <title>Python f-strings - Tushar | Blog</title>
+    <title>GSoC Experience - Tushar | Blog</title>
     <meta name="author" content="Tushar Gautam">
     
         <meta name="keywords" content="tushar.rishav,Tushar Gautam,NIT Trichy,Delta,">
@@ -15,19 +15,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
     
-    <meta name="description" content="Hey there! How are you doing? :)
-Since past couple of days I’ve been attending the EuroPython conference at Bilbao, Spain and it has been an increíble experience so far! There are over a dozen amazing">
+    <meta name="description" content="Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience and the stuff that I have learnt in the past 11 weeks while contr">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Python f-strings">
-<meta property="og:url" content="http://gtushar.co/blog/2016/07/21/Python-f-strings/index.html">
+<meta property="og:title" content="GSoC Experience">
+<meta property="og:url" content="http://gtushar.co/blog/2016/08/07/GSoC-Experience/index.html">
 <meta property="og:site_name" content="Tushar | Blog">
-<meta property="og:description" content="Hey there! How are you doing? :)
-Since past couple of days I’ve been attending the EuroPython conference at Bilbao, Spain and it has been an increíble experience so far! There are over a dozen amazing">
-<meta property="og:updated_time" content="2016-08-06T20:39:43.497Z">
+<meta property="og:description" content="Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience and the stuff that I have learnt in the past 11 weeks while contr">
+<meta property="og:updated_time" content="2016-08-07T00:46:15.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python f-strings">
-<meta name="twitter:description" content="Hey there! How are you doing? :)
-Since past couple of days I’ve been attending the EuroPython conference at Bilbao, Spain and it has been an increíble experience so far! There are over a dozen amazing">
+<meta name="twitter:title" content="GSoC Experience">
+<meta name="twitter:description" content="Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience and the stuff that I have learnt in the past 11 weeks while contr">
 <meta name="twitter:creator" content="@tushar_rishav">
     
     
@@ -253,13 +250,13 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Python f-strings
+            GSoC Experience
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-07-21T01:07:54+05:30">
+    <time itemprop="datePublished" datetime="2016-08-07T04:47:45+05:30">
 	
-		    Jul 21, 2016
+		    Aug 07, 2016
     	
     </time>
     
@@ -269,16 +266,12 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Hey there! How are you doing? :)</p>
-<p>Since past couple of days I’ve been attending the <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference at Bilbao, Spain and it has been an <em>increíble</em> experience so far! There are over a dozen amazing talks with something new to share every day and the super fun lightning talks at the end of the day. If for some reason you weren’t able to attend the conference then you may see the talks <a href="https://www.youtube.com/results?search_query=europython+2016" target="_blank" rel="external">live</a> at EuroPython YouTube channel.</p>
-<p>In this blog I would like to talk briefly about <a href="https://mail.python.org/pipermail/python-dev/2015-September/141526.html" target="_blank" rel="external">PEP498</a> - Literal String Interpolation in Python. Python supports multiple ways to format text strings (<code>%</code>-formatting, <code>format</code> formatting and <code>Templates</code>). Each of these are useful in some ways but they do lack in other aspects. For eg. the simplest version of <code>format</code> style is too verbose.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line"><span class="string">“EuroPython is happening at &#123;place&#125;”</span>.format(place=place)</span><br></pre></td></tr></table></figure>
-
-<p>Clearly, there is a redundancy. <strong>place</strong> is being used multiple times. Similarly, <code>%</code> formatting is limited with the types (<code>int</code>, <code>str</code>, <code>double</code>) that can be parsed.</p>
-<p><strong>f-strings</strong> are proposed in PEP498. f-strings are basically a literal strings with ‘f’ or ‘F’ as prefix. It embeds expressions using braces that are evaluated at runtime. Let’s see some simple examples:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line">print(f<span class="string">“EuroPython is happening at &#123;place&#125;”</span>)  <span class="comment"># Simple enough, right?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">“Hello”</span></span><br><span class="line"></span><br><span class="line">print(f<span class="string">‘&#123;say_hello()&#125; there!’</span>)</span><br></pre></td></tr></table></figure>
-
-<p>I think that’s simpler and better than other string formatting options. If this feature interests you and you want to learn more about it then I recommend checking out the PEP498 <a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="external">documentation</a>.</p>
+            <p>Well, it’s been quite a time since the last blog. The current blog and the following blogs are going to be about my overall experience and the stuff that I have learnt in the past 11 weeks while contributing to <a href="https://github.com/coala-analyzer/" target="_blank" rel="external">coala-analyzer</a> as a <a href="summerofcode.withgoogle.com">Google Summer of Code</a> developer under Python Software Foundation. The list is long hence I won’t contain them in single post. :)</p>
+<h3 id="EuroPython’16-Experience"><a href="#EuroPython’16-Experience" class="headerlink" title="EuroPython’16 Experience"></a>EuroPython’16 Experience</h3><p>Recently, I attended <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference at Bilbao, Spain where I had a chance to meet a few cool fellow coalaians ( @sils1297, @sims1253, @Udayan12167, @justuswilhelm, @Redridge, @Adrianzatreanu and @hypothesist ) and over thousand Pythonista | Pythoneer who happened to share their love and experience using Python by presenting talks, lightning talks or training session. Sadly, I couldn’t meet <a href="https://github.com/Uran198" target="_blank" rel="external">Attila Tovt</a> my amazing GSoC mentor.</p>
+<p>Being my first PyCon ever, I was a little nervous but curious about it. Having spent a day with the community made me feel comfortable. Seeing the energy that people shared, I was overwhelmed! In the coming days, mornings started with a Keynote speaker which was then followed by over dozen talks throughout a day on various exciting topics like Descriptors in Python, Effective Code Review, AsyncIO, Algorithmic Trading with Python, Deep Learning with tensorflow, <a href="https://github.com/larryhastings/gilectomy" target="_blank" rel="external">Gilectomy</a>: overcoming the GIL in CPython implementation by <a href="https://github.com/larryhastings" target="_blank" rel="external">Lary Hastings</a> and many more.</p>
+<p>Finally the exploration ended with the workshop which I conducted on <a href="https://ep2016.europython.eu/conference/talks/guid-to-make-a-real-contribution-to-an-open-source-project-for-novice" target="_blank" rel="external">Guide to make a real contribution to an open source project for novice</a>. It was a learning experience and definitely memorable for me! Being the first time in Europe, I was excited. People are friendly and the place is truly beautiful! :)</p>
+<h3 id="GSoC’16-Experience"><a href="#GSoC’16-Experience" class="headerlink" title="GSoC’16 Experience"></a>GSoC’16 Experience</h3><p>Well, it has been totally an amazing and learning experience during this summer. I could effectively learn the best practices for a collaborative programmer and (probably) became one! Credits to my mentor - @Uran198 who patiently and solicitously reviewed my PRs. I never really bothered to follow practices like <em>atomic changes</em> , <em>TDD</em> aiming for <em>maximum coverage</em> for good code quality until I started contributing. Honestly, following such practices seemed bloating and sometimes annoying at first but once I got hold of them, they became a habit. I think during the GSoC period, the crucial things that I have learnt are how to write a code that is maintainable (docstrings, effective and atomic commits), testable (efficient code design, writing unittests and impressive coverage) and follows the standards. Having learnt these skills, I look forward to share them with my friends and the community.<br>The coming blogs would cover these practices in details. :)</p>
+<h3 id="GSoC’16-status"><a href="#GSoC’16-status" class="headerlink" title="GSoC’16 status"></a>GSoC’16 status</h3><p>11 weeks are over with a week remaining before submissions. <a href="https://github.com/coala-analyzer/coala-html/" target="_blank" rel="external">coala-html</a> project is ready with this <a href="https://github.com/coala-analyzer/coala-html/pull/81" target="_blank" rel="external">PR</a>. I shall be working on to improve this project even after my GSoC period is over. Apart from coala-html, coala-website is almost ready with minor design stuff remaining. Soon enough I will submit it for review. :)</p>
 <p>Cheers!</p>
 
             
@@ -289,7 +282,7 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/PEP498/">PEP498</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/Python/">Python</a>
+    <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/FOSS/">FOSS</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/GSOC/">GSOC</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/PSF/">PSF</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/coala/">coala</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/coala-html/">coala-html</a>
 
             </div>
         
@@ -298,7 +291,7 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/08/07/GSoC-Experience/"  data-tooltip="GSoC Experience">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -306,7 +299,7 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/07/20/Week-6/" data-tooltip="Week 6">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/07/21/Python-f-strings/" data-tooltip="Python f-strings">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -321,17 +314,17 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -379,7 +372,7 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/08/07/GSoC-Experience/"  data-tooltip="GSoC Experience">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -387,7 +380,7 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/07/20/Week-6/" data-tooltip="Week 6">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/07/21/Python-f-strings/" data-tooltip="Python f-strings">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -402,17 +395,17 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -438,17 +431,17 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/">
                 <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
@@ -503,9 +496,9 @@ Since past couple of days I’ve been attending the EuroPython conference at Bil
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://gtushar.co/blog/blog/2016/07/21/Python-f-strings/';
+                 this.page.url = 'http://gtushar.co/blog/blog/2016/08/07/GSoC-Experience/';
                  
-                    this.page.identifier = '2016/07/21/Python-f-strings/';
+                    this.page.identifier = '2016/08/07/GSoC-Experience/';
                                   
              };
             (function() {
