@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Tushar | Blog">
-    <title>Tag: Python - Tushar | Blog</title>
+    <title>Pipes in Linux - Tushar | Blog</title>
     <meta name="author" content="Tushar Gautam">
     
         <meta name="keywords" content="tushar.rishav,Tushar Gautam,NIT Trichy,Delta,">
@@ -15,15 +15,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/blog/atom.xml">
     
-    <meta name="description" content="Tushar&apos;s personal blog">
+    <meta name="description" content="In this blog, I’d like to share about Pipes - an interesting feature of Unix/Linux operating systems (it’s available in other systems too). Having talked about Pipes in brief, I will do the implementa">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Tushar | Blog">
-<meta property="og:url" content="http://gtushar.co/blog/all-tags/Python/index.html">
+<meta property="og:title" content="Pipes in Linux">
+<meta property="og:url" content="http://gtushar.co/blog/2016/08/13/Pipes-in-Linux/index.html">
 <meta property="og:site_name" content="Tushar | Blog">
-<meta property="og:description" content="Tushar&apos;s personal blog">
+<meta property="og:description" content="In this blog, I’d like to share about Pipes - an interesting feature of Unix/Linux operating systems (it’s available in other systems too). Having talked about Pipes in brief, I will do the implementa">
+<meta property="og:updated_time" content="2016-08-13T01:01:47.965Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tushar | Blog">
-<meta name="twitter:description" content="Tushar&apos;s personal blog">
+<meta name="twitter:title" content="Pipes in Linux">
+<meta name="twitter:description" content="In this blog, I’d like to share about Pipes - an interesting feature of Unix/Linux operating systems (it’s available in other systems too). Having talked about Pipes in brief, I will do the implementa">
 <meta name="twitter:creator" content="@tushar_rishav">
     
     
@@ -62,7 +63,7 @@
         
     
 
-<header id="header" data-behavior="2">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
         <a class="header-title-link" href="/blog/ ">Tushar | Blog</a>
@@ -84,7 +85,7 @@
 
     
 
-<nav id="sidebar" data-behavior="2">
+<nav id="sidebar" data-behavior="4">
     
         <div class="sidebar-profile">
             <a href="/blog/#about">
@@ -238,28 +239,21 @@
 </nav>
 
             
-            <div id="main" data-behavior="2"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    
-
-<section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/blog/2016/08/13/Pipes-in-Linux/">
-                            Pipes in Linux
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Pipes in Linux
+        </h1>
+    
+    <div class="post-meta">
     <time itemprop="datePublished" datetime="2016-08-13T01:38:22+05:30">
 	
 		    Aug 13, 2016
@@ -268,10 +262,11 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>In this blog, I’d like to share about <a href="https://en.wikipedia.org/wiki/Pipeline_(Unix" target="_blank" rel="external">Pipes</a> - an interesting feature of Unix/Linux operating systems (it’s available in other systems too). Having talked about Pipes in brief, I will do the implementation in Python. So let’s get started!</p>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>In this blog, I’d like to share about <a href="https://en.wikipedia.org/wiki/Pipeline_(Unix" target="_blank" rel="external">Pipes</a> - an interesting feature of Unix/Linux operating systems (it’s available in other systems too). Having talked about Pipes in brief, I will do the implementation in Python. So let’s get started!</p>
 <h3 id="Pipe"><a href="#Pipe" class="headerlink" title="Pipe"></a>Pipe</h3><h6 id="Brief-History"><a href="#Brief-History" class="headerlink" title="Brief History"></a>Brief History</h6><p>Pipes are the eldest IPC tools and were introduced by <a href="https://en.wikipedia.org/wiki/Douglas_McIlroy" target="_blank" rel="external">Douglas McIlroy</a> after he noticed that most of the time they were processing the output of one process as the input to another. Later, <a href="https://en.wikipedia.org/wiki/Ken_Thompson" target="_blank" rel="external">Ken Thompson</a> added the concept of pipes to the UNIX operating system.</p>
 <h6 id="About"><a href="#About" class="headerlink" title="About"></a>About</h6><p>In simple terms, a <em>pipe</em> is a method of connecting the standard output of one process to the standard input of another. A quick example:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls . | sort</div></pre></td></tr></table></figure></p>
 <p>In the above shell command (reading from left to right), we are passing the output from <code>ls</code> command as an input to <code>sort</code> command. The combined output is a current directory’s content in a sorted order. The vertical bar ( <code>|</code> ) is a pipe character. It acts as a method of one-way communications (or half-duplex) between processes.</p>
@@ -309,136 +304,88 @@
 <p>Phew! That was fun!</p>
 <p>Cheers!</p>
 
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/blog/2016/08/13/Pipes-in-Linux/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/blog/2016/07/21/Python-f-strings/">
-                            Python f-strings
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-07-21T01:07:54+05:30">
-	
-		    Jul 21, 2016
-    	
-    </time>
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/Linux/">Linux</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/Pipes/">Pipes</a> <a class="tag tag--primary tag--small t-link" href="/blog/all-tags/Python/">Python</a>
 
             </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>Hey there! How are you doing? :)</p>
-<p>Since past couple of days I’ve been attending the <a href="https://ep2016.europython.eu/en/" target="_blank" rel="external">EuroPython</a> conference at Bilbao, Spain and it has been an <em>increíble</em> experience so far! There are over a dozen amazing talks with something new to share every day and the super fun lightning talks at the end of the day. If for some reason you weren’t able to attend the conference then you may see the talks <a href="https://www.youtube.com/results?search_query=europython+2016" target="_blank" rel="external">live</a> at EuroPython YouTube channel.</p>
-<p>In this blog I would like to talk briefly about <a href="https://mail.python.org/pipermail/python-dev/2015-September/141526.html" target="_blank" rel="external">PEP498</a> - Literal String Interpolation in Python. Python supports multiple ways to format text strings (<code>%</code>-formatting, <code>format</code> formatting and <code>Templates</code>). Each of these are useful in some ways but they do lack in other aspects. For eg. the simplest version of <code>format</code> style is too verbose.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line"><span class="string">“EuroPython is happening at &#123;place&#125;”</span>.format(place=place)</span><br></pre></td></tr></table></figure>
-
-<p>Clearly, there is a redundancy. <strong>place</strong> is being used multiple times. Similarly, <code>%</code> formatting is limited with the types (<code>int</code>, <code>str</code>, <code>double</code>) that can be parsed.</p>
-<p><strong>f-strings</strong> are proposed in PEP498. f-strings are basically a literal strings with ‘f’ or ‘F’ as prefix. It embeds expressions using braces that are evaluated at runtime. Let’s see some simple examples:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">place = <span class="string">“Bilbao, Spain”</span></span><br><span class="line">print(f<span class="string">“EuroPython is happening at &#123;place&#125;”</span>)  <span class="comment"># Simple enough, right?</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">say_hello</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">“Hello”</span></span><br><span class="line"></span><br><span class="line">print(f<span class="string">‘&#123;say_hello()&#125; there!’</span>)</span><br></pre></td></tr></table></figure>
-
-<p>I think that’s simpler and better than other string formatting options. If this feature interests you and you want to learn more about it then I recommend checking out the PEP498 <a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="external">documentation</a>.</p>
-<p>Cheers!</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/blog/2016/07/21/Python-f-strings/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/blog/2016/05/27/coala-html-Beta/">
-                            coala-html Beta
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2016-05-27T19:03:26+05:30">
-	
-		    May 27, 2016
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>So I had been working on coala-html beta version since a few weeks.<br>The <a href="https://github.com/coala-analyzer/coala-html/pull/46" target="_blank" rel="external">PR</a> was certainly huge to be reviewed at once and soon became cumbersome to keep changes updated. But credits to my mentor - <a href="https://github.com/Uran198" target="_blank" rel="external">Attila</a> and the constructive feedbacks from <a href="https://github.com/AbdealiJK" target="_blank" rel="external">Abdeali</a>, I could get it done the right way, making an appropriate and meaningful commits with a better code.</p>
-<h5 id="What-is-coala-html"><a href="#What-is-coala-html" class="headerlink" title="What is coala-html?"></a><a href="#What-is-coala-html" title="What is coala-html?"></a>What is coala-html?</h5><p><a href="https://github.com/coala-analyzer/coala-html" target="_blank" rel="external">coala-html</a> is a console application that runs <a href="https://github.com/coala-analyzer/coala" target="_blank" rel="external">coala</a> analysis and generates an interactive webpage for the user.</p>
-<h5 id="How-coala-html-works"><a href="#How-coala-html-works" class="headerlink" title="How coala-html works?"></a><a href="#How-coala-html-works" title="How coala-html works?"></a>How coala-html works?</h5><p>coala-html, creates a webpage (Angular app) based on certain json files that are generated - first time when coala-html is run on a given repository, or updated - running coala-html again. By default, the generated webpage is served by launching a server at localhost and the json files are updated. User has an option to change this behaviour by providing the <code>nolaunch</code> and <code>noupdate</code> arguments respectively  while running the coala-html. User can also provide an optional <code>dir</code> or directory path argument that will store the code for the webpage.<br>You may see a brief demo below:<br><img src="http://res.cloudinary.com/tusharrishav/image/upload/c_scale,w_1080/v1464355604/demo_ipdzsw.gif" alt="Demo"></p>
-<p>Now as the basic functionalities are done, I am gonna work on improving the UI and writing more tests for having maximum coverage in coming weeks.</p>
-<p>Stay tuned! :)</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/blog/2016/05/27/coala-html-Beta/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
-        
-        
-        <li class="pagination-next">
-            <a class="btn btn--default btn--small" href="/blog/all-tags/Python/page/2/">
-                    <span>OLDER POSTS</span>
-                <i class="fa fa-angle-right text-base icon-ml"></i>
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/08/07/GSoC-Experience/" data-tooltip="GSoC Experience">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-twitter"></i>
             </a>
         </li>
         
-        <li class="pagination-number">page 1 of 2</li>
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -448,6 +395,89 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/blog/2016/08/07/GSoC-Experience/" data-tooltip="GSoC Experience">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
             
         </div>
         
@@ -492,6 +522,25 @@
     <!--SCRIPTS-->
 <script src="/blog/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
 <!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://gtushar.co/blog/blog/2016/08/13/Pipes-in-Linux/';
+                 
+                    this.page.identifier = '2016/08/13/Pipes-in-Linux/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'gtushar';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
 
 
 
