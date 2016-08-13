@@ -68,11 +68,11 @@
     </summary>
     
     
-      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
-      <category term="Linux" scheme="http://gtushar.co/blog/all-tags/Linux/"/>
+      <category term="Linux" scheme="http://gtushar.co/blog/tags/Linux/"/>
     
-      <category term="Pipes" scheme="http://gtushar.co/blog/all-tags/Pipes/"/>
+      <category term="Pipes" scheme="http://gtushar.co/blog/tags/Pipes/"/>
     
   </entry>
   
@@ -99,15 +99,15 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+      <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
-      <category term="FOSS" scheme="http://gtushar.co/blog/all-tags/FOSS/"/>
+      <category term="FOSS" scheme="http://gtushar.co/blog/tags/FOSS/"/>
     
-      <category term="PSF" scheme="http://gtushar.co/blog/all-tags/PSF/"/>
+      <category term="PSF" scheme="http://gtushar.co/blog/tags/PSF/"/>
     
   </entry>
   
@@ -139,9 +139,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
-      <category term="PEP498" scheme="http://gtushar.co/blog/all-tags/PEP498/"/>
+      <category term="PEP498" scheme="http://gtushar.co/blog/tags/PEP498/"/>
     
   </entry>
   
@@ -170,11 +170,11 @@
     </summary>
     
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="GSoC" scheme="http://gtushar.co/blog/all-tags/GSoC/"/>
+      <category term="GSoC" scheme="http://gtushar.co/blog/tags/GSoC/"/>
     
-      <category term="coalaWebsite" scheme="http://gtushar.co/blog/all-tags/coalaWebsite/"/>
+      <category term="coalaWebsite" scheme="http://gtushar.co/blog/tags/coalaWebsite/"/>
     
   </entry>
   
@@ -197,13 +197,13 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+      <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
-      <category term="beta" scheme="http://gtushar.co/blog/all-tags/beta/"/>
+      <category term="beta" scheme="http://gtushar.co/blog/tags/beta/"/>
     
   </entry>
   
@@ -254,17 +254,17 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+      <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
-      <category term="Karma" scheme="http://gtushar.co/blog/all-tags/Karma/"/>
+      <category term="Karma" scheme="http://gtushar.co/blog/tags/Karma/"/>
     
-      <category term="Mocha" scheme="http://gtushar.co/blog/all-tags/Mocha/"/>
+      <category term="Mocha" scheme="http://gtushar.co/blog/tags/Mocha/"/>
     
-      <category term="Chai" scheme="http://gtushar.co/blog/all-tags/Chai/"/>
+      <category term="Chai" scheme="http://gtushar.co/blog/tags/Chai/"/>
     
   </entry>
   
@@ -289,13 +289,13 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="coala-html" scheme="http://gtushar.co/blog/all-tags/coala-html/"/>
+      <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
-      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
   </entry>
   
@@ -348,9 +348,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
-      <category term="GUI Automation" scheme="http://gtushar.co/blog/all-tags/GUI-Automation/"/>
+      <category term="GUI Automation" scheme="http://gtushar.co/blog/tags/GUI-Automation/"/>
     
   </entry>
   
@@ -375,15 +375,15 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="EuroPython" scheme="http://gtushar.co/blog/all-tags/EuroPython/"/>
+      <category term="EuroPython" scheme="http://gtushar.co/blog/tags/EuroPython/"/>
     
-      <category term="Python" scheme="http://gtushar.co/blog/all-tags/Python/"/>
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
-      <category term="PyCon" scheme="http://gtushar.co/blog/all-tags/PyCon/"/>
+      <category term="PyCon" scheme="http://gtushar.co/blog/tags/PyCon/"/>
     
   </entry>
   
@@ -418,9 +418,9 @@
     </summary>
     
     
-      <category term="Philosophy" scheme="http://gtushar.co/blog/all-tags/Philosophy/"/>
+      <category term="Philosophy" scheme="http://gtushar.co/blog/tags/Philosophy/"/>
     
-      <category term="The Monk Who Sold His Ferrari" scheme="http://gtushar.co/blog/all-tags/The-Monk-Who-Sold-His-Ferrari/"/>
+      <category term="The Monk Who Sold His Ferrari" scheme="http://gtushar.co/blog/tags/The-Monk-Who-Sold-His-Ferrari/"/>
     
   </entry>
   
@@ -447,11 +447,11 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/all-tags/GSOC/"/>
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
-      <category term="coala" scheme="http://gtushar.co/blog/all-tags/coala/"/>
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
-      <category term="init" scheme="http://gtushar.co/blog/all-tags/init/"/>
+      <category term="init" scheme="http://gtushar.co/blog/tags/init/"/>
     
   </entry>
   
