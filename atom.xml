@@ -359,13 +359,13 @@
     </summary>
     
     
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
+    
       <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
-    
-      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
   </entry>
   
@@ -445,15 +445,15 @@
     </summary>
     
     
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
-    
-      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
-    
       <category term="EuroPython" scheme="http://gtushar.co/blog/tags/EuroPython/"/>
     
       <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
       <category term="PyCon" scheme="http://gtushar.co/blog/tags/PyCon/"/>
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
   </entry>
   
