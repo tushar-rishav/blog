@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://gtushar.co/blog/"/>
-  <updated>2016-08-13T03:03:35.807Z</updated>
+  <updated>2016-08-18T20:20:33.719Z</updated>
   <id>http://gtushar.co/blog/</id>
   
   <author>
@@ -14,6 +14,76 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GSoC&#39;16 final report</title>
+    <link href="http://gtushar.co/blog/2016/08/18/GSoC-16-final-report/"/>
+    <id>http://gtushar.co/blog/2016/08/18/GSoC-16-final-report/</id>
+    <published>2016-08-18T17:31:15.000Z</published>
+    <updated>2016-08-18T20:20:33.719Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://cloud.githubusercontent.com/assets/7397433/17783732/e92b4076-6596-11e6-8eb5-4e89c18bf435.png" alt="GSoC"></p>
+<p>Alright folks. It’s officially an end to the amazing 12 weeks of Google Summer of Code 2016! These 12 weeks have certainly helped me become a better person, both personally and professionally. I’ve had a chance to interact and learn from some very interesting and amazing minds from coala. Sadly, I couldn’t meet all but a few of them during my PyCon’16 Europe trip this summer.</p>
+<h5 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h5><p>First and foremost, I would like to pay my eternal gratitude to my mentor <a href="https://github.com/Uran198" target="_blank" rel="external">Attila Tovt</a> who patiently helped me improve the patch through multiple reviews. I was learning something new with each iteration. The major take away for me from his mentorship would be:</p>
+<blockquote>
+<p>There is always a hack to something, then there is a solution to it.</p>
+</blockquote>
+<p>Sadly, I couldn’t meet him during PyCon Europe, but I am hopeful to pay my regards in person someday! :)</p>
+<p>Next, I must thank <a href="https://github.com/AbdealiJK" target="_blank" rel="external">Abdeali</a> for helping and guiding when I started my journey with coala and also <a href="https://github.com/sils1297" target="_blank" rel="external">Lasse Schuirmann</a>. Well after all he is coala’s BDFL! Wondering what that means? <em>Benevolent Dictator for Life</em> :D</p>
+<p>Hmm, on a serious note, if I say I am going to continue contributing to coala or any other FOSS that I may come across in future, one of the major reasons and an influencer would be Lasse! The guy is totally amazing. I don’t think anything else could describe him better than his own words that he said during EuroPython’16</p>
+<blockquote>
+<p>Guys! Don’t just be a participant. It’s boring! Be and create a conference!</p>
+</blockquote>
+<p>Impressive isn’t it? That’s Lasse for you! :)</p>
+<p>I would also thank fellow GSoC students and now my new friends - Adrian, Adhithya, Alex, Karan, Arif, Sanket and Abhay. I look forward to stay in touch with them even after GSoC! :)</p>
+<p>Last but far from the least, thanks to <a href="https://github.com/sims1253" target="_blank" rel="external">Max</a> for giving such a wonderful <a href="https://www.youtube.com/watch?v=WeismL1Ldeg&amp;feature=youtu.be" target="_blank" rel="external">lightning talk</a> at EuroPython’16, cooking for us with all love at Bilbao, for being such an amazing and wonderful person.</p>
+<p>The acknowledgement must end with my gratitude to <a href="http://github.com/coala-analyzer" target="_blank" rel="external">coala</a>, <a href="https://google.com" target="_blank" rel="external">Google</a> and <a href="https://www.python.org/psf/" target="_blank" rel="external">Python Software Foundation</a> for giving me an opportunity to be a GSoC student in the first place.</p>
+<h5 id="Work-history"><a href="#Work-history" class="headerlink" title="Work history"></a>Work history</h5><p>Past summer, I’ve contributed and maintained coala-html and coala-website projects. The commits and live demos are available online.</p>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Commits</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://coala-analyzer.github.io/coala-html/" target="_blank" rel="external">coala-html demo</a></td>
+<td><a href="https://github.com/coala-analyzer/coala-html/commits/master?author=tushar-rishav" target="_blank" rel="external">coala-html commits</a>, total 49 commits</td>
+<td>completed</td>
+</tr>
+<tr>
+<td><a href="https://gitlab.com/coala/website" target="_blank" rel="external">coala website repo</a> and <a href="https://www.youtube.com/watch?v=YEQyE0KGXLI&amp;list=PLwYOTlwjGsp0yI1bf149VCsXFoddpTHqb&amp;index=3" target="_blank" rel="external">coala embedded in coala-website demo</a></td>
+<td><a href="https://gitlab.com/coala/website/commits/master" target="_blank" rel="external">coala website commits</a>, total 27 commits</td>
+<td>It is almost complete, but requires improvement in design.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Although GSoC period may end, my contributions to FOSS won’t! :)</p>
+<p>Regards,<br>Tushar</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://cloud.githubusercontent.com/assets/7397433/17783732/e92b4076-6596-11e6-8eb5-4e89c18bf435.png&quot; alt=&quot;GSoC&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Alrigh
+    
+    </summary>
+    
+    
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
+    
+      <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
+    
+      <category term="Google" scheme="http://gtushar.co/blog/tags/Google/"/>
+    
+      <category term="PSF" scheme="http://gtushar.co/blog/tags/PSF/"/>
+    
+  </entry>
   
   <entry>
     <title>Pipes in Linux</title>
@@ -105,9 +175,9 @@
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
-      <category term="FOSS" scheme="http://gtushar.co/blog/tags/FOSS/"/>
-    
       <category term="PSF" scheme="http://gtushar.co/blog/tags/PSF/"/>
+    
+      <category term="FOSS" scheme="http://gtushar.co/blog/tags/FOSS/"/>
     
   </entry>
   
