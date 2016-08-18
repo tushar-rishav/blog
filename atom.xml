@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://gtushar.co/blog/"/>
-  <updated>2016-08-18T20:20:33.719Z</updated>
+  <updated>2016-08-18T21:56:39.035Z</updated>
   <id>http://gtushar.co/blog/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <link href="http://gtushar.co/blog/2016/08/18/GSoC-16-final-report/"/>
     <id>http://gtushar.co/blog/2016/08/18/GSoC-16-final-report/</id>
     <published>2016-08-18T17:31:15.000Z</published>
-    <updated>2016-08-18T20:20:33.719Z</updated>
+    <updated>2016-08-18T21:56:39.035Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://cloud.githubusercontent.com/assets/7397433/17783732/e92b4076-6596-11e6-8eb5-4e89c18bf435.png" alt="GSoC"></p>
-<p>Alright folks. It’s officially an end to the amazing 12 weeks of Google Summer of Code 2016! These 12 weeks have certainly helped me become a better person, both personally and professionally. I’ve had a chance to interact and learn from some very interesting and amazing minds from coala. Sadly, I couldn’t meet all but a few of them during my PyCon’16 Europe trip this summer.</p>
+<p>Alright folks. It’s officially an end to the amazing 12 weeks of Google Summer of Code 2016! These 12 weeks have certainly helped me become a better person, both personally and professionally. I’ve had a chance to interact and learn from some very interesting and amazing minds from coala. Sadly, I couldn’t meet all but a few of them during the EuroPython conference this summer.</p>
 <h5 id="Acknowledgement"><a href="#Acknowledgement" class="headerlink" title="Acknowledgement"></a>Acknowledgement</h5><p>First and foremost, I would like to pay my eternal gratitude to my mentor <a href="https://github.com/Uran198" target="_blank" rel="external">Attila Tovt</a> who patiently helped me improve the patch through multiple reviews. I was learning something new with each iteration. The major take away for me from his mentorship would be:</p>
 <blockquote>
 <p>There is always a hack to something, then there is a solution to it.</p>
 </blockquote>
-<p>Sadly, I couldn’t meet him during PyCon Europe, but I am hopeful to pay my regards in person someday! :)</p>
+<p>Sadly, I couldn’t meet him during EuroPython conference, but I am hopeful to pay my regards in person someday! :)</p>
 <p>Next, I must thank <a href="https://github.com/AbdealiJK" target="_blank" rel="external">Abdeali</a> for helping and guiding when I started my journey with coala and also <a href="https://github.com/sils1297" target="_blank" rel="external">Lasse Schuirmann</a>. Well after all he is coala’s BDFL! Wondering what that means? <em>Benevolent Dictator for Life</em> :D</p>
 <p>Hmm, on a serious note, if I say I am going to continue contributing to coala or any other FOSS that I may come across in future, one of the major reasons and an influencer would be Lasse! The guy is totally amazing. I don’t think anything else could describe him better than his own words that he said during EuroPython’16</p>
 <blockquote>
@@ -359,13 +359,13 @@
     </summary>
     
     
-      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
-    
       <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
+    
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
   </entry>
   
@@ -445,15 +445,15 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
+    
       <category term="EuroPython" scheme="http://gtushar.co/blog/tags/EuroPython/"/>
     
       <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
       <category term="PyCon" scheme="http://gtushar.co/blog/tags/PyCon/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
-    
-      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
   </entry>
   
