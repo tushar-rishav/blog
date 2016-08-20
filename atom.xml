@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://gtushar.co/blog/"/>
-  <updated>2016-08-19T08:28:22.399Z</updated>
+  <updated>2016-08-20T20:33:12.453Z</updated>
   <id>http://gtushar.co/blog/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mutable default arguments in Python</title>
+    <link href="http://gtushar.co/blog/2016/08/21/Mutable-default-arguments-in-Python/"/>
+    <id>http://gtushar.co/blog/2016/08/21/Mutable-default-arguments-in-Python/</id>
+    <published>2016-08-20T18:50:20.000Z</published>
+    <updated>2016-08-20T20:33:12.453Z</updated>
+    
+    <content type="html"><![CDATA[<p>Recently, I came across an interesting feature in Python and thought I should share it with everyone.</p>
+<p>Suppose we have a code snippet that looks like:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(default_immutable_arg=<span class="string">"Hello"</span>,</span></span></div><div class="line">         default_mutable_arg=&#123;&#125;):</div><div class="line">    key = <span class="string">'some_key'</span></div><div class="line">    default_immutable_arg += <span class="string">"!"</span></div><div class="line">    print(default_immutable_arg),</div><div class="line">    <span class="keyword">if</span> default_mutable_arg.get(key, <span class="keyword">None</span>):</div><div class="line">        print(<span class="string">"&#123;key&#125; exists"</span>.format(key=key))</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">"&#123;key&#125; doesn't exist"</span>.format(key=key))</div><div class="line">        default_mutable_arg[key] = <span class="string">"some_value"</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">    func()</div></pre></td></tr></table></figure>
+<p>Before reading further, please stop and go through the code snippet carefully.</p>
+<p>Now, What output do you expect from the above snippet? There is a high probability (unless you are a Python wizard!) that you might expect the output to be<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Hello! some_key doesn<span class="symbol">'t</span> exist</div><div class="line">Hello! some_key doesn<span class="symbol">'t</span> exist</div><div class="line">Hello! some_key doesn<span class="symbol">'t</span> exist</div></pre></td></tr></table></figure></p>
+<p>Well, if that’s what you expected, then you are wrong!</p>
+<p>The correct output is<br><figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Hello! some_key doesn't exist</div><div class="line">Hello! some_key exists</div><div class="line">Hello! some_key exists</div></pre></td></tr></table></figure></p>
+<p>Interesting isn’t it? Let’s dig a little deeper and find out why this happens.</p>
+<p>Perhaps, it’s quite known now.</p>
+<blockquote>
+<p>Expressions in default arguments are calculated when the function is defined, not when it’s called.</p>
+</blockquote>
+<p>Before I explain further, let’s verify the above statement quickly:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_func</span><span class="params">(arg=time.time<span class="params">()</span>)</span>:</span></div><div class="line">    <span class="keyword">return</span> arg</div><div class="line"></div><div class="line"><span class="keyword">print</span> [time_func() <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)]</div></pre></td></tr></table></figure></p>
+<p>For me the output looks like<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1471723451.85</span>, <span class="number">1471723451.85</span>, <span class="number">1471723451.85</span>]</div><div class="line"><span class="comment"># Notice the exact same timestamps here.</span></div></pre></td></tr></table></figure></p>
+<p>Clearly, <code>arg</code> was calculated when <code>time_func</code> was defined and not when it’s called otherwise you would expect <code>arg</code> to be different each time it’s executed.</p>
+<p>Coming to our <code>func</code> example. When <code>def</code> statement is executed a new function object is created, bound to the name <code>func</code> and stored in the namespace of the module. Within the function object, <em>for each argument object with a default value, an object is created that holds the default value.</em></p>
+<p>In the above example, a <em>string object</em> (“Hello!”) and an empty <em>dictionary object</em> is created as a default for <code>default_immutable_arg</code> and <code>default_mutable_arg</code> respectively.</p>
+<p>Now, whenever <code>func</code> is called without arguments, the arguments will use the values from their default bounded object i.e <code>default_immutable_arg</code> will always be “Hello!” but <code>default_mutable_arg</code> <em>may</em> change. It’s because of the fact that string objects are immutable whereas a dictionary objects are mutable. So whenever in line 4, we append “!” to <code>default_immutable_arg</code>, <em>a new string object is created and returned</em> which is then printed in next line, keeping default string object’s value still intact.</p>
+<p>This isn’t the case with mutable dictionary objects. The first time we execute <code>func</code> without any arguments, <code>default_mutable_arg</code> takes its value from default dictionary object which is <code>{}</code> now. Hence, the <code>else</code> block will be executed. Since the dictionary objects are mutable, the <code>else</code> block <em>changes</em> the default dictionary object. So in the next execution of the function, when <code>default_mutable_arg</code> reads from default dictionary object, it receives <code>{&#39;some_key&#39;:&#39;some_value&#39;}</code> and not <code>{}</code>. Interesting huh? Well that’s the explanation! :)</p>
+<h5 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h5><p>Don’t use the mutable argument objects as default arguments! Simple! So how do we improve our <code>func</code> ? Well, just use <code>None</code> as default argument value and check for <code>None</code> inside function body to determine if the arguments were passed or not.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(default_immutable_arg=<span class="string">"Hello"</span>,</span></span></div><div class="line">         default_mutable_arg=None):</div><div class="line">    default_mutable_arg = (&#123;&#125; <span class="keyword">if</span> default_mutable_arg <span class="keyword">is</span> <span class="keyword">None</span></div><div class="line">                              <span class="keyword">else</span> default_mutable_arg)</div><div class="line">    <span class="comment"># rest is same..</span></div></pre></td></tr></table></figure></p>
+<p>Now, you can imagine what would happen if we overlook this feature in defining class methods. Clearly, all the class instances will share the same references to the same object which isn’t something you’d want to have in the first place! :)</p>
+<p>I hope that was fun,</p>
+<p>Cheers!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Recently, I came across an interesting feature in Python and thought I should share it with everyone.&lt;/p&gt;
+&lt;p&gt;Suppose we have a code snipp
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>GSoC&#39;16 final report</title>
@@ -136,13 +180,13 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
     
       <category term="Google" scheme="http://gtushar.co/blog/tags/Google/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="PSF" scheme="http://gtushar.co/blog/tags/PSF/"/>
     
@@ -232,11 +276,11 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="PSF" scheme="http://gtushar.co/blog/tags/PSF/"/>
     
@@ -330,11 +374,11 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="beta" scheme="http://gtushar.co/blog/tags/beta/"/>
     
@@ -387,11 +431,11 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="Karma" scheme="http://gtushar.co/blog/tags/Karma/"/>
     
@@ -422,11 +466,11 @@
     </summary>
     
     
+      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
       <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="coala-html" scheme="http://gtushar.co/blog/tags/coala-html/"/>
-    
-      <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
     
       <category term="Python" scheme="http://gtushar.co/blog/tags/Python/"/>
     
@@ -508,9 +552,9 @@
     </summary>
     
     
-      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
-    
       <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="EuroPython" scheme="http://gtushar.co/blog/tags/EuroPython/"/>
     
@@ -580,9 +624,9 @@
     </summary>
     
     
-      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
-    
       <category term="GSOC" scheme="http://gtushar.co/blog/tags/GSOC/"/>
+    
+      <category term="coala" scheme="http://gtushar.co/blog/tags/coala/"/>
     
       <category term="init" scheme="http://gtushar.co/blog/tags/init/"/>
     
